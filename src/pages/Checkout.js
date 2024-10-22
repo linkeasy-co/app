@@ -7,7 +7,7 @@ import { loadStripe } from '@stripe/stripe-js';
 import TextField from '../components/TextField'; // Importando o componente TextField
 
 const Checkout = () => {
-  const stripePromise = loadStripe('pk_test_51PP6UBBSFIQe4my1IGSdEjEUHIPzgiLgwRDJ803I0O17VAPPaotbXOp06bL29rtezpyxhXZYaLjGsaB6OVo0vma600IpomKgWN');
+  const stripePromise = loadStripe(process.env.REACT_APP_STRIPE_PUBLIC_KEY);
   const [email, setEmail] = useState('');
   const [name, setName] = useState('');
   const [profession, setProfession] = useState('');

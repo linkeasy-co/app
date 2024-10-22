@@ -56,7 +56,7 @@ const Profile = () => {
   }, [navigate]);
 
   const handleLinkedInIntegration = () => {
-    window.location.href = 'https://ebef-2804-7f0-9100-d805-21d2-e82f-3cc0-a932.ngrok-free.app/api/linkedin/auth';
+    window.location.href = process.env.REACT_APP_API_URL_LINK;
   };
 
   const handleCreateTags = (inputValue) => {
