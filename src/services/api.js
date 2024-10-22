@@ -27,6 +27,7 @@ export const createCreditCard = async (body) => {
 };
 
 export const createUserLead = async (body) => {
+  console.log(API_URL)
   const response = await axios.post(`${API_URL}/auth/create-user-lead`, body);
   return response.data;
 };
