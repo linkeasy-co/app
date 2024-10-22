@@ -15,6 +15,7 @@ const SelectList = ({ label, options, value, onChange }) => {
       </select>
     </div>
   );
+
 };
 
 export default SelectList;
