@@ -1,0 +1,180 @@
+@import "./App.scss"; // Importa as variáveis globais e temas
+
+.success-container {
+  max-width: 600px;
+  margin: 0 auto;
+  padding: 20px;
+  background-color: var(--bg-light);
+  border-radius: 8px;
+  box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+  font-family: 'Arial', sans-serif;
+
+  .dark & {
+    background-color: var(--bg-dark); // Fundo no tema escuro
+    color: var(--text-light); // Texto claro no tema escuro
+  }
+}
+
+h2 {
+  text-align: center;
+  color: #333;
+  font-size: 24px;
+}
+
+p {
+  text-align: center;
+  color: black;
+
+  .dark & {
+    color: white; // Texto claro no tema escuro
+  }
+}
+
+input[type="password"],
+input[type="time"] {
+  width: 100%;
+  padding: 10px;
+  margin-top: 5px;
+  margin-bottom: 15px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  box-sizing: border-box;
+  font-size: 14px;
+}
+
+input[type="password"]:focus,
+input[type="time"]:focus {
+  border-color: #007bff;
+  outline: none;
+}
+
+/* Botão de submissão */
+.btn-primary {
+  display: block;
+  width: 100%;
+  padding: 10px 0;
+  background-color: #007bff;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  font-size: 16px;
+  cursor: pointer;
+  text-align: center;
+  margin-top: 10px;
+  transition: background-color 0.3s ease;
+}
+
+.btn-primary:hover {
+  background-color: #0056b3;
+}
+
+/* Mensagens de erro e sucesso */
+.error-message {
+  color: #d9534f;
+  text-align: center;
+  margin-bottom: 15px;
+  font-weight: bold;
+}
+
+.success-message {
+  color: #5cb85c;
+  text-align: center;
+  margin-bottom: 15px;
+  font-weight: bold;
+}
+
+/* Estilos do DatePicker */
+.react-datepicker {
+  width: 100%;
+}
+
+.react-datepicker__input-container {
+  width: 100%;
+}
+
+.react-datepicker__day--selected,
+.react-datepicker__day--highlighted {
+  background-color: #007bff !important;
+  color: white !important;
+}
+
+.react-datepicker__day--keyboard-selected {
+  background-color: #0056b3 !important;
+}
+
+.react-datepicker__day--disabled {
+  color: #ddd !important;
+  cursor: not-allowed;
+}
+
+/* Seção de horários */
+h4 {
+  color: #333;
+  margin-top: 20px;
+}
+
+input[type="time"] {
+  display: inline-block;
+  width: 48%;
+  margin-right: 2%;
+}
+
+input[type="time"]:nth-child(2) {
+  margin-right: 0;
+}
+
+h3 {
+  color: #333;
+  margin-bottom: 10px;
+  text-align: center;
+}
+
+/* Resumo */
+div>h4 {
+  color: #007bff;
+  font-size: 18px;
+  margin-bottom: 10px;
+}
+
+p {
+  color: #555;
+  font-size: 14px;
+}
+
+/* Estilize o container flexível */
+.datepicker-container {
+  display: flex;
+  justify-content: center;
+  /* Centraliza o conteúdo */
+  align-items: center;
+  width: 100%;
+  /* O container pode ser ajustado a 100% do seu espaço pai */
+}
+
+/* Defina o tamanho do DatePicker dentro do container */
+.datepicker-container .react-datepicker-wrapper {
+  width: 100%;
+  /* Use 100% do espaço do container flex */
+  max-width: 400px;
+  /* Defina um tamanho máximo opcional */
+}
+
+.react-datepicker {
+  align-items: center;
+  /* Centralize o DatePicker */
+  justify-content: center;
+}
+
+@media (max-width: 768px) {
+  .datepicker-container .react-datepicker-wrapper {
+    max-width: 300px;
+    /* Diminuir o tamanho em telas menores */
+  }
+}
+
+@media (max-width: 480px) {
+  .datepicker-container .react-datepicker-wrapper {
+    max-width: 100%;
+    /* Ocupa toda a largura em telas pequenas */
+  }
+}

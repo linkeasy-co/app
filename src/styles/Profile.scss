@@ -1,0 +1,214 @@
+@import "./App.scss"; // Importa as variáveis globais e temas
+
+.profile-container {
+  max-width: 800px;
+  margin: 50px auto;
+  padding: 40px;
+  background: var(--bg-light); // Cor padrão para o tema claro
+  color: var(--text-dark); // Texto no tema claro
+  border-radius: 15px;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.25);
+  text-align: center;
+  position: relative;
+  transition: all 0.3s ease;
+
+  // Tema escuro
+  .dark & {
+    background: var(--bg-dark); // Cor de fundo para o tema escuro
+    color: var(--text-light); // Cor do texto no tema escuro
+  }
+
+  h2 {
+    font-size: 36px;
+    margin-bottom: 30px;
+    color: var(--accent-color); // Usando a cor de destaque do tema
+    text-shadow: none;
+  }
+
+  .dark & h2 {
+    color: var(--accent-dark); // Cor de destaque para o tema escuro
+  }
+
+  .error-message {
+    color: var(--error-color); // Cor de erro no tema padrão
+    font-size: 16px;
+    margin-bottom: 20px;
+    animation: shake 0.5s;
+  }
+
+  .profile-details {
+    background-color: var(--bg-light); // Fundo do card para tema claro
+    padding: 30px;
+    border-radius: 10px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+    margin-bottom: 30px;
+
+    .dark & {
+      background-color: var(--bg-dark); // Fundo do card para tema escuro
+      color: var(--text-light); // Texto claro no tema escuro
+    }
+
+    p {
+      font-size: 18px;
+      margin-bottom: 15px;
+      color: black; // Texto padrão no tema claro
+    }
+
+    .dark & p {
+      color: white; // Texto claro no tema escuro
+    }
+
+    form {
+      margin-bottom: 20px;
+
+      .input-group {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        margin-bottom: 20px;
+
+        label {
+          font-size: 16px;
+          color: var(--text-dark); // Texto padrão no tema claro
+          margin-bottom: 8px;
+
+          .dark & {
+            color: var(--text-light); // Texto claro no tema escuro
+          }
+        }
+
+        input,
+        select {
+          padding: 10px 15px;
+          width: 100%;
+          max-width: 300px;
+          border-radius: 5px;
+          border: none;
+          outline: none;
+          background: var(--input-bg); // Fundo do input no tema claro
+          color: var(--text-dark); // Texto no input para o tema claro
+          font-size: 16px;
+          transition: background 0.3s ease, box-shadow 0.3s ease;
+
+          .dark & {
+            background: var(--input-dark-bg); // Fundo do input para o tema escuro
+            color: var(--text-light); // Texto claro no input
+          }
+
+          &:focus {
+            background: var(--input-focus-bg); // Fundo de foco no tema claro
+            box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
+
+            .dark & {
+              background: var(--input-focus-bg-dark); // Fundo de foco no tema escuro
+              box-shadow: 0 0 15px rgba(255, 255, 255, 0.4);
+            }
+          }
+        }
+      }
+    }
+  }
+
+  .btn-save,
+  .btn-linkedin,
+  .btn-logout {
+    display: inline-block;
+    padding: 15px 30px;
+    margin: 10px;
+    font-size: 16px;
+    border-radius: 50px;
+    border: none;
+    cursor: pointer;
+    color: #fff;
+    text-transform: uppercase;
+    letter-spacing: 1.2px;
+    transition: background-color 0.3s, transform 0.3s ease;
+
+    &:hover {
+      transform: scale(1.05);
+      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+
+      .dark & {
+        box-shadow: 0 4px 15px rgba(255, 255, 255, 0.2);
+      }
+    }
+
+    &:active {
+      transform: scale(0.98);
+    }
+  }
+
+  .btn-save {
+    background-color: var(--accent-color); // Cor padrão no tema claro
+
+    .dark & {
+      background-color: var(--accent-dark); // Cor no tema escuro
+    }
+  }
+
+  .btn-linkedin {
+    background-color: #0077b5; // Azul do LinkedIn
+    position: relative;
+    overflow: hidden;
+
+    &:hover {
+      background-color: #005983;
+    }
+
+    &:before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: -75%;
+      width: 100%;
+      height: 100%;
+      background: rgba(255, 255, 255, 0.2);
+      transform: skewX(-25deg);
+      transition: all 0.7s;
+    }
+
+    &:hover:before {
+      left: 150%;
+    }
+  }
+
+  .btn-logout {
+    background-color: var(--error-color); // Cor padrão para sair
+
+    .dark & {
+      background-color: #d9534f; // Cor de erro no tema escuro
+    }
+  }
+
+  @keyframes shake {
+
+    0%,
+    100% {
+      transform: translateX(0);
+    }
+
+    25% {
+      transform: translateX(-5px);
+    }
+
+    50% {
+      transform: translateX(5px);
+    }
+
+    75% {
+      transform: translateX(-5px);
+    }
+  }
+}
+
+input,
+select {
+  &:focus {
+    background-color: var(--input-focus-bg);
+    box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
+
+    .dark & {
+      background-color: var(--input-focus-bg-dark); // Cor de foco no tema escuro
+    }
+  }
+}

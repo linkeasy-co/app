@@ -1,0 +1,106 @@
+@import "./App.scss"; // Importa as variáveis globais e temas
+
+// Contêiner do dashboard com layout em coluna
+.dashboard-container {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  padding: 40px;
+  max-width: 800px;
+  margin: 0 auto;
+  background: var(--bg-light);
+  transition: background-color 0.3s ease, color 0.3s ease;
+
+  .dark & {
+    background: var(--bg-dark); // Fundo do tema escuro
+    color: var(--text-light); // Texto claro no tema escuro
+  }
+}
+
+// Estilo dos cartões de post
+.post-card {
+  background: var(--bg-light);
+  padding: 25px;
+  border-radius: 15px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s ease, box-shadow 0.3s ease, background-color 0.3s ease;
+  position: relative;
+  overflow: hidden;
+
+  &:hover {
+    transform: translateY(-5px); // Leve elevação no hover
+    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.2); // Sombra mais forte
+    background: linear-gradient(135deg, var(--accent-color), var(--bg-light)); // Gradiente suave no hover
+  }
+
+  h2 {
+    font-size: 26px;
+    font-weight: bold;
+    color: var(--accent-color);
+    margin-bottom: 10px;
+    transition: color 0.3s ease;
+
+    .dark & {
+      color: var(--accent-dark); // Cor de destaque no tema escuro
+    }
+  }
+
+  p {
+    font-size: 16px;
+    white-space: pre-wrap; // Mantém quebras de linha nas mensagens
+    margin-bottom: 20px;
+
+    .dark & {
+      color: white; // Texto claro no tema escuro
+    }
+  }
+
+  // Estilização das visualizações
+  .views {
+    font-size: 14px;
+    color: var(--accent-color); // Cor de destaque para visualizações
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.8px;
+    position: absolute;
+    bottom: 20px;
+    right: 20px;
+    opacity: 0.9;
+    transition: color 0.3s ease;
+
+    &:before {
+      content: '👁'; // Ícone de olho antes do número de visualizações
+      margin-right: 5px;
+    }
+
+    .dark & {
+      color: var(--accent-dark); // Ajuste da cor no tema escuro
+    }
+  }
+
+  // Tema escuro para os cartões
+  .dark & {
+    background: linear-gradient(135deg, var(--bg-dark), #222); // Gradiente no fundo escuro
+    color: var(--text-light); // Texto claro
+  }
+}
+
+// Animações para transições mais suaves
+@keyframes smoothFade {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+// Efeito ao alternar o tema
+html.dark {
+  animation: smoothFade 0.5s ease-in-out; // Animação ao aplicar o tema escuro
+}
+
+// Ajustes globais para smooth transitions
+* {
+  transition: background-color 0.3s ease, color 0.3s ease, transform 0.3s ease;
+}

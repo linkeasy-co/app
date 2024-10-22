@@ -1,0 +1,55 @@
+:root {
+  --bg-light: #f7f9fb; /* Soft light background */
+  --bg-dark: #121212; /* Deep dark background */
+  --text-light: #333; /* Darker text for readability */
+  --text-dark: #f4f4f4; /* Softer white for dark mode */
+  --accent-color: #b4ce35; /* Modern green accent */
+  --accent-dark: #8b9e2c; /* Darker accent for hover states */
+  --edges-color: #b4ce35; /* Edge highlight color */
+  --edges-light-color: rgba(181, 206, 53, 0.15); /* Lighter accent for cards */
+}
+
+h1, h2, h3, h4, h5, h6, p {
+  color: inherit;
+}
+
+.app {
+  font-family: var(--font-family);
+  color: inherit;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  transition: background-color 0.3s, color 0.3s;
+}
+
+.light {
+  background-color: var(--bg-light);
+  color: var(--text-light);
+}
+
+.dark {
+  background-color: var(--bg-dark);
+  color: var(--text-dark);
+}
+
+.footer {
+  margin-top: auto;
+  background-color: var(--edges-color);
+  padding: 10px;
+  text-align: center;
+}
+
+/* Button or component-specific styling based on theme */
+.button {
+  background-color: var(--edges-color);
+  color: var(--text-dark);
+  padding: 12px 20px;
+  border-radius: 8px;
+  border: 2px solid var(--edges-light-color);
+  transition: background-color 0.3s, color 0.3s;
+
+  &:hover {
+    background-color: var(--edges-light-color);
+    color: var(--text-light);
+  }
+}
