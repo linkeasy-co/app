@@ -8,6 +8,7 @@
   align-items: center;
   border-bottom: 1px solid var(--edges-light-color);
 
+
   .logo {
     display: flex;
     align-items: center;
@@ -44,54 +45,66 @@
   }
 
   .theme-toggle-btn {
-    background-color: #FFD700; /* Amarelo no início */
+    background-color: #FFD700;
+    /* Amarelo no início */
     color: white;
     border: none;
-    border-radius: 50%; /* Botão arredondado */
+    border-radius: 50%;
+    /* Botão arredondado */
     padding: 12px;
     display: flex;
     justify-content: center;
     align-items: center;
-    font-size: 18px; /* Tamanho do ícone */
+    font-size: 18px;
+    /* Tamanho do ícone */
     cursor: pointer;
     transition: background-color 0.3s, transform 0.3s, color 0.3s;
 
     &:hover {
-      background-color: #FFB400; /* Tom mais suave ao passar o mouse */
-      transform: scale(1.1); /* Aumenta o botão ao passar o mouse */
+      background-color: #FFB400;
+      /* Tom mais suave ao passar o mouse */
+      transform: scale(1.1);
+      /* Aumenta o botão ao passar o mouse */
     }
 
     &:active {
       background-color: #FFA000;
-      transform: scale(0.98); /* Pequena redução ao clicar */
+      transform: scale(0.98);
+      /* Pequena redução ao clicar */
     }
   }
 
   /* Modo escuro: botão roxo para amarelo */
   .dark .theme-toggle-btn {
-    background-color: #6A0DAD; /* Roxo no modo escuro */
+    background-color: #6A0DAD;
+    /* Roxo no modo escuro */
     color: white;
 
     &:hover {
-      background-color: #800080; /* Um roxo mais claro ao passar o mouse */
+      background-color: #800080;
+      /* Um roxo mais claro ao passar o mouse */
     }
 
     &:active {
-      background-color: #5A0B85; /* Roxo mais escuro ao clicar */
+      background-color: #5A0B85;
+      /* Roxo mais escuro ao clicar */
     }
   }
 
   /* Modo claro: botão amarelo para branco */
   .light .theme-toggle-btn {
     background-color: white;
-    color: #FFD700; /* Ícone amarelo no modo claro */
+    color: #FFD700;
+    /* Ícone amarelo no modo claro */
 
     &:hover {
-      background-color: #f1f1f1; /* Cinza claro ao passar o mouse */
+      background-color: #f1f1f1;
+      /* Cinza claro ao passar o mouse */
     }
 
     &:active {
-      background-color: #e0e0e0; /* Cinza mais escuro ao clicar */
+      background-color: #e0e0e0;
+      /* Cinza mais escuro ao clicar */
     }
   }
 }

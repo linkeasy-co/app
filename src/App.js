@@ -24,6 +24,10 @@ function App() {
 
   useEffect(() => {
     // Verificar se o token está no LocalStorage ao iniciar o app
+    const theme = localStorage.getItem('theme', !darkMode);
+    if (!theme) {
+      setDarkMode(true);
+    }
     const token = localStorage.getItem('token');
     if (token) {
       setIsAuthenticated(true); // Define como autenticado se o token existir
