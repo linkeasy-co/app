@@ -3,28 +3,13 @@ import { useLocation, useNavigate } from 'react-router-dom';
 import { completeUser } from '../services/api';
 import '../styles/SchedulePicker.scss';
 import TextField from './TextField';
-import SelectList from './SelectList';
-
-const daysOfWeek = [
-  { value: 'monday', label: 'Segunda-feira' },
-  { value: 'tuesday', label: 'Terça-feira' },
-  { value: 'wednesday', label: 'Quarta-feira' },
-  { value: 'thursday', label: 'Quinta-feira' },
-  { value: 'friday', label: 'Sexta-feira' },
-  { value: 'saturday', label: 'Sábado' },
-  { value: 'sunday', label: 'Domingo' },
-];
 
 const SchedulePicker = () => {
-  const [firstDay, setFirstDay] = useState('');
-  const [secondDay, setSecondDay] = useState('');
-  const [firstTime, setFirstTime] = useState('');
-  const [secondTime, setSecondTime] = useState('');
+
   const [password, setPassword] = useState('');
   const [confirmPassword, setConfirmPassword] = useState('');
   const [errorMessage, setErrorMessage] = useState('');
   const [successMessage, setSuccessMessage] = useState('');
-  const [selectedTags, setSelectedTags] = useState([]);
   const [email, setEmail] = useState('');
   const location = useLocation();
   const navigate = useNavigate();

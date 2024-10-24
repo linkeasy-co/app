@@ -1,26 +1,26 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import '../styles/Login.scss';
-import { useSnackbar } from '../components/SnackBar';
 
-const Login = ({ login }) => {
+const RecoverPassword = ({ login }) => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
-  const [loading, setLoading] = useState(false);
-  const navigate = useNavigate();
-  const { showSnackbar } = useSnackbar();
+  const [confirmPassword, setConfirmPassword] = useState('');
+  const [code, setCode] = useState('');
+  const [errorMessage, setErrorMessage] = useState('');
+  const [loading, setLoading] = useState(false); // Adicionando estado de loading
 
   const handleSubmit = async (e) => {
     e.preventDefault();
     setLoading(true); // Ativa o loading
     try {
-      const firstAcess = localStorage.getItem('first_acess')
-      await login({ email, password });
-      if (firstAcess === 'true') navigate('/profile');
-      else navigate('/dashboard');
-      localStorage.removeItem('first_acess');
+      // sendCodeLogic
+      const recoveredCode = 1234;
+      if (recoveredCode === code) {
+        //logica para resetar senha
+      }
     } catch (error) {
-      showSnackbar('Email ou senha inválidos');
+      setErrorMessage('Erro ao fazer login. Tente novamente.');
     } finally {
       setLoading(false); // Desativa o loading após o processo de login
     }
@@ -29,6 +29,8 @@ const Login = ({ login }) => {
   return (
     <div className="login-container">
       <h2>Login</h2>
+      {errorMessage && <p className="error-message">{errorMessage}</p>}
+
       <form onSubmit={handleSubmit}>
         <div className="input-group">
           <label htmlFor="email">Email</label>
@@ -42,17 +44,6 @@ const Login = ({ login }) => {
           />
         </div>
 
-        <div className="input-group">
-          <label htmlFor="password">Senha</label>
-          <input
-            type="password"
-            id="password"
-            value={password}
-            onChange={(e) => setPassword(e.target.value)}
-            required
-            disabled={loading} // Desativa o campo enquanto carrega
-          />
-        </div>
 
         <button type="submit" className="btn-primary" disabled={loading}>
           {loading ? <div className="spinner"></div> : 'Entrar'} {/* Mostra o spinner durante o loading */}
@@ -62,4 +53,4 @@ const Login = ({ login }) => {
   );
 };
 
-export default Login;
+export default RecoverPassword;

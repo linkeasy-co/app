@@ -1,0 +1,58 @@
+/* Centralizando o checkbox na tela de forma correta */
+.container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;  /* Altura total da tela */
+  width: 100vw;   /* Largura total da tela */
+  background-color: var(--bg-light); /* Apenas para visualizar melhor */
+}
+
+.checkbox-container {
+  display: flex;
+  align-items: center;
+  gap: 10px; /* Espaço entre o checkbox e o label */
+}
+
+.checkbox {
+  position: relative;
+  width: 24px;
+  height: 24px;
+  border: 2px solid var(--accent-color); /* Cor personalizada */
+  border-radius: 4px;
+  background-color: white;
+  transition: background-color 0.2s, border-color 0.2s;
+}
+
+.checkbox:before {
+  content: '';
+  position: absolute;
+  width: 8px;
+  height: 16px;
+  border-right: 3px solid white;
+  border-bottom: 3px solid white;
+  transform: rotate(45deg);
+  top: 50%;
+  left: 50%;
+  transform-origin: center;
+  transform: translate(-50%, -60%) scale(0);
+  transition: transform 0.2s ease;
+}
+
+.checkbox input[type='checkbox'] {
+  display: none;
+}
+
+.checkbox input[type='checkbox']:checked + .checkbox:before {
+  transform: translate(-50%, -60%) scale(1);
+}
+
+.checkbox input[type='checkbox']:checked + .checkbox {
+  background-color: var(--accent-color);
+  border-color: var(--accent-color);
+}
+
+.label {
+  font-size: 16px;
+  color: var(--text-light);
+}

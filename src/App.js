@@ -12,6 +12,7 @@ import Header from './components/Header';
 import './styles/App.scss';
 import { makelogin } from './services/api';
 import Logout from './pages/Logout';
+import { SnackbarProvider } from './components/SnackBar';
 
 function App() {
   const [darkMode, setDarkMode] = useState(true);
@@ -54,21 +55,24 @@ function App() {
 
 
   return (
-    <div className={darkMode ? 'app dark' : 'app light'}>
-      <Router>
-        <Header toggleTheme={toggleTheme} darkMode={darkMode} isAuthenticated={isAuthenticated} />
-        <Routes>
-          <Route path="/" element={<LandingPage />} />
-          <Route path="/compra" element={<Checkout />} />
-          <Route path="/success" element={<Success />} />
-          <Route path="/login" element={<Login login={login} />} />
-          <Route path="/profile" element={<ProtectedRoute element={Profile} />} />
-          <Route path="/linkedin/success" element={<LinkedInSuccess />} />
-          <Route path="/dashboard" element={<ProtectedRoute element={Dashboard} />} />
-          <Route path="/logout" element={<Logout />} />
-        </Routes>
-      </Router>
-    </div>
+    <SnackbarProvider>
+      <div className={darkMode ? 'app dark' : 'app light'}>
+        <Router>
+          <Header toggleTheme={toggleTheme} darkMode={darkMode} isAuthenticated={isAuthenticated} />
+          <Routes>
+            <Route path="/" element={<LandingPage />} />
+            <Route path="/compra" element={<Checkout />} />
+            <Route path="/success" element={<Success />} />
+            <Route path="/login" element={<Login login={login} />} />
+            <Route path="/recover-password" element={<Login login={login} />} />
+            <Route path="/profile" element={<ProtectedRoute element={Profile} />} />
+            <Route path="/linkedin/success" element={<LinkedInSuccess />} />
+            <Route path="/dashboard" element={<ProtectedRoute element={Dashboard} />} />
+            <Route path="/logout" element={<Logout />} />
+          </Routes>
+        </Router>
+      </div>
+    </SnackbarProvider>
   );
 }
 
