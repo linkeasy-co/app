@@ -18,11 +18,12 @@ function LinkedInSuccess() {
     if (token && userId) {
       // Armazene o token no localStorage ou em um estado global para uso posterior
       handleAuthToken(token, userId);
+      localStorage.setItem('chooseDate', true)
+      localStorage.removeItem('firstAcess')
       // Navegue para a página de perfil, dashboard, ou outro fluxo
       setTimeout(() => {
         navigate('/profile');
       }, 2000);
-      navigate('/profile'); // ou qualquer outra rota de destino
     } else {
       // Se não houver token, redireciona para a página de login ou erro
       navigate('/login');
@@ -33,9 +34,6 @@ function LinkedInSuccess() {
     const userToken = localStorage.getItem('token');
     const data = await saveAuthToken(userToken, token, userId);
     localStorage.setItem('token', data.token);
-    localStorage.setItem('chooseDate', true)
-    localStorage.removeItem('firstAcess')
-    navigate('/profile');
   };
 
   return (
