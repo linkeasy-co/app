@@ -38,6 +38,7 @@ function App() {
   const login = async (credentials) => {
     const data = await makelogin(credentials); // Chama a função login
     localStorage.setItem('token', data.token); // Salva o token no localStorage
+    localStorage.setItem('user', JSON.stringify(data.user)); // Salva o usuário no localStorage
     <Navigate to="/profile" />; // Salva o token no LocalStorage
     setIsAuthenticated(true); // Atualiza o estado de autenticação
   };

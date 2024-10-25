@@ -1,0 +1,15 @@
+@import "./App.scss";
+
+.user-info {
+  color: var(--text-dark);
+  border-radius: 15px;
+  text-align: center;
+  position: relative;
+  transition: all 0.3s ease;
+
+  .dark & {
+    background: var(--bg-dark);
+    color: var(--text-light);
+  }
+
+}

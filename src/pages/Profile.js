@@ -3,8 +3,11 @@ import { useNavigate } from 'react-router-dom';
 import { getProfile, updateProfile } from '../services/api';
 import '../styles/Profile.scss';
 import TagSelector from '../components/TagSelector';
-import TextField from '../components/TextField'; // Componente TextField
-import SelectList from '../components/SelectList'; // Componente SelectList
+import UserInfo from '../components/UserInfo';
+import LinkedInIntegrationButton from '../components/LinkedInIntegrationButton';
+import Tabs from '../components/Tabs';
+import NewSchedulePicker from '../components/NewSchedulePicker';
+import { SnackbarProvider, useSnackbar } from '../components/SnackBar';
 
 const daysOfWeek = [
   { value: 'monday', label: 'Segunda-feira' },
@@ -25,6 +28,7 @@ const Profile = () => {
   const [firstTime, setFirstTime] = useState('');
   const [secondTime, setSecondTime] = useState('');
   const navigate = useNavigate();
+  const { showSnackbar } = useSnackbar();
 
   useEffect(() => {
     const fetchProfile = async () => {
@@ -65,19 +69,19 @@ const Profile = () => {
   };
 
   const handleChangeTags = (newValue) => {
-    setSelectedTags(newValue || []); // Atualiza as tags selecionadas
+    setSelectedTags(newValue || []);
   };
 
   const handleSubmit = async (e) => {
     e.preventDefault();
 
     if (!firstDay || !firstTime || !secondDay || !secondTime) {
-      setErrorMessage('Selecione os dias e horários');
+      showSnackbar('Selecione os dias e horários');
       return;
     }
 
     if (selectedTags.length === 0) {
-      setErrorMessage('Selecione pelo menos uma tag');
+      showSnackbar('Selecione pelo menos uma tag');
       return;
     }
 
@@ -90,70 +94,68 @@ const Profile = () => {
         tags: selectedTags
       });
 
-      if (response.message === 'Perfil atualizado com sucesso!') {
-        setErrorMessage('Perfil atualizado com sucesso!');
-      }
+
+      showSnackbar('Perfil atualizado com sucesso!', 'success');
+
     } catch (error) {
-      console.error('Erro ao atualizar o perfil:', error);
-      setErrorMessage('Ocorreu um erro ao atualizar o perfil. Tente novamente.');
+      SnackbarProvider('Erro ao atualizar o perfil. Tente novamente.');
     }
   };
 
+  if (!user) {
+    return <p>Carregando...</p>;
+  }
+
+  // Conteúdo das abas
+  const tabs = [
+    {
+      label: 'Informações Pessoais',
+      content: <UserInfo email={user.email} name={user.name} profession={user.profession} />,
+    },
+    {
+      label: 'Dias e Horários',
+      content: (
+        <NewSchedulePicker
+          daysOfWeek={daysOfWeek}
+          firstDay={firstDay}
+          firstTime={firstTime}
+          secondDay={secondDay}
+          secondTime={secondTime}
+          setFirstDay={setFirstDay}
+          setFirstTime={setFirstTime}
+          setSecondDay={setSecondDay}
+          setSecondTime={setSecondTime}
+        />
+      ),
+    },
+    {
+      label: 'Integração com LinkedIn',
+      content: (
+        <LinkedInIntegrationButton onClick={handleLinkedInIntegration} />
+      ),
+    },
+    {
+      label: 'Tags',
+      content: (
+        <TagSelector
+          selectedTags={selectedTags}
+          onChangeTags={handleChangeTags}
+          onCreateTag={handleCreateTags}
+        />
+      ),
+    },
+  ];
+
   return (
     <div className="profile-container">
-      <h2>Perfil do Usuário</h2>
+      <h2>Olá, {user.name}!</h2>
       {errorMessage && <p className="error-message">{errorMessage}</p>}
-
-      {user ? (
-        <div className="profile-details">
-          <p>Email: {user.email}</p>
-          <p>Nome: {user.name}</p>
-          <p>Profissão: {user.profession}</p>
-
-          <form onSubmit={handleSubmit}>
-            <SelectList
-              label="Primeiro Dia"
-              options={daysOfWeek}
-              value={firstDay}
-              onChange={(e) => setFirstDay(e.target.value)}
-            />
-
-            <TextField
-              label="Horário do Primeiro Dia"
-              type="time"
-              value={firstTime}
-              onChange={(e) => setFirstTime(e.target.value)}
-            />
-
-            <SelectList
-              label="Segundo Dia"
-              options={daysOfWeek}
-              value={secondDay}
-              onChange={(e) => setSecondDay(e.target.value)}
-            />
-
-            <TextField
-              label="Horário do Segundo Dia"
-              type="time"
-              value={secondTime}
-              onChange={(e) => setSecondTime(e.target.value)}
-            />
-
-            <TagSelector
-              selectedTags={selectedTags}
-              onChangeTags={handleChangeTags}
-              onCreateTag={handleCreateTags}
-            />
-
-            <div className="button-group">
-              <button type="submit" className="btn-save">Salvar</button>
-              <button onClick={handleLinkedInIntegration} className="btn-linkedin">Integrar com LinkedIn</button>
-            </div>
-          </form>
+      <Tabs tabs={tabs} />
+      <form onSubmit={handleSubmit}>
+        <div className="button-group">
+          <button type="submit" className="btn-save">Salvar</button>
         </div>
-      ) : (
-        <p>Carregando...</p>
-      )}
+      </form>
     </div>
   );
 };

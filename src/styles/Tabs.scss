@@ -1,0 +1,48 @@
+.tabs {
+  .tab-headers {
+    display: flex;
+    margin-bottom: 1rem;
+
+    button {
+      padding: 0.5rem 1rem;
+      cursor: pointer;
+      border: none;
+      background-color: var(--bg-light);
+      margin-right: 0.5rem;
+      transition: background-color 0.3s ease, color 0.3s ease;
+      border-radius: 10px;
+
+      .dark & {
+        background-color: var(--bg-dark);
+        color: var(--text-dark);
+      }
+
+      &.active {
+        background-color: var(--accent-color);
+        /* A cor de destaque */
+        color: var(--text-dark);
+        /* Texto claro quando ativo */
+      }
+
+      &:hover {
+        background-color: var(--edges-light-color);
+        /* Cor suave para hover */
+        color: var(--text-light);
+        /* Texto escuro no hover */
+      }
+    }
+  }
+
+  .tab-content {
+    padding: 1rem;
+    border-radius: 10px;
+    border: 1px solid var(--edges-color);
+    background-color: var(--bg-light);
+    color: var(--text-dark);
+
+    .dark & {
+      background-color: var(--bg-dark);
+      color: var(--text-light);
+    }
+  }
+}

@@ -33,6 +33,8 @@ function LinkedInSuccess() {
     const userToken = localStorage.getItem('token');
     const data = await saveAuthToken(userToken, token, userId);
     localStorage.setItem('token', data.token);
+    localStorage.setItem('chooseDate', true)
+    localStorage.removeItem('firstAcess')
     navigate('/profile');
   };
 

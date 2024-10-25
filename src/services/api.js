@@ -81,6 +81,7 @@ export const completeUser = async (email, password, date, tags) => {
     date,
     tags
   });
+  localStorage.setItem('firstAcess', true);
   return response.data;
 };
 
