@@ -1,4 +1,5 @@
 @import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap');
+
 :root { 
   --light-gray: #2c2c2c;
   --dark-gray: #111111;
@@ -24,7 +25,8 @@
 * {
   box-sizing: border-box;
   padding: 0;
-  margin: 0;  
+  margin: 0;
+  font-family: var(--font-family);
 }
 
 h1, h2, h3, h4, h5, h6, p {
@@ -38,7 +40,6 @@ a {
 .app {
   width: 100%;
   font-family: var(--font-family);
-  color: inherit;
   min-height: 100vh;
   display: flex;
   flex-direction: column;
@@ -66,4 +67,40 @@ a {
     background-color: var(--edges-light-color);
     color: var(--text-light);
   }
+}
+
+::-webkit-scrollbar {
+  width: 10px;  
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--accent-dark);
+  border-radius: 5px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--accent-dark);
+}
+
+@mixin breakpoint($size) {
+  @if $size == mobile {
+    @media (max-width: 600px) { @content; }
+  } @else if $size == laptop {
+    @media (max-width: 900px) { @content; }
+  } @else if $size == desktop {
+    @media (max-width: 1200px) { @content; }
+  } 
+}
+
+@mixin after-style($height, $bottom) {
+  content: ''; 
+  display: block; 
+  width: 100%; 
+  height: $height; 
+  background-color: var(--accent-color); 
+  position: absolute; 
+  left: 0; 
+  bottom: $bottom; 
+  border-radius: 2px;
+  z-index: -1;
 }

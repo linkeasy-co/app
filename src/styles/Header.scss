@@ -123,6 +123,7 @@ $transition-duration: 0.3s;
       transform: translateX(100%);
       transition: transform $transition-duration ease;
       box-shadow: -2px 0 8px rgba(0, 0, 0, 0.4);
+      z-index: 99;
   
       &.open {
         transform: translateX(0);
@@ -160,7 +161,7 @@ $transition-duration: 0.3s;
   }
 
   .menu-mobile-btn {
-    z-index: 1;
+    z-index: 100;
     display: flex;
     flex-direction: column;
     justify-content: space-around;
