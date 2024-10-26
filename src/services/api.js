@@ -125,7 +125,7 @@ export const postUserForm = async (body) => {
 
 export const postPost = async (body) => {
   const response = await axiosInstance.post(`${API_URL}/posts`, body, {
-    headers: { Authorization: `Bearer ${await getToken()}` },
+    headers: { Authorization: `${await getToken()}` },
   });
   return response.data;
 }
