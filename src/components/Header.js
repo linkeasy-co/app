@@ -10,8 +10,8 @@ const Header = ({ darkMode, toggleTheme, isAuthenticated }) => {
   const toggleMenu = () => setIsMenuOpen(!isMenuOpen)
   return (
     <header className="header">
-      <a className="logo">
-        <img src={logo} alt="LinkEasy Logo" className="logo-img" href="/" />
+      <a className="logo" href="/">
+        <img src={logo} alt="LinkEasy Logo" className="logo-img" />
       </a>
 
       <button className={`menu-mobile-btn ${isMenuOpen ? 'open' : ''}`} onClick={toggleMenu}>
@@ -31,10 +31,10 @@ const Header = ({ darkMode, toggleTheme, isAuthenticated }) => {
           {isAuthenticated && (<li><a href="/dashboard">Meus Posts</a></li>)}
           {isAuthenticated && (<li><a href="/profile">Perfil</a></li>)}
           {isAuthenticated && (<li><a href="/logout">Sair</a></li>)}
-          {!isAuthenticated && (<li><a href="/logout">Sobre nós</a></li>)}
-          {!isAuthenticated && (<li><a href="/logout">Serviços</a></li>)}
-          {!isAuthenticated && (<li><a href="/logout">Preços</a></li>)}
-          {!isAuthenticated && (<li><a href="/logout">Suporte</a></li>)}
+          {!isAuthenticated && (<li><a href="/">Sobre nós</a></li>)}
+          {!isAuthenticated && (<li><a href="/">Serviços</a></li>)}
+          {!isAuthenticated && (<li><a href="/">Preços</a></li>)}
+          {!isAuthenticated && (<li><a href="/">Suporte</a></li>)}
         </ul>
       </nav>
       {!isAuthenticated && (<a className='login-btn' href="/login">Entrar</a>)}
