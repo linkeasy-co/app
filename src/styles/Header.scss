@@ -1,110 +1,204 @@
 @import "./App.scss";
+$header-height: 90px;
+$border-radius: 36px;
+$transition-duration: 0.3s;
 
 .header {
-  background-color: #1d1d1d;
-  padding: 20px;
-  display: flex;
-  justify-content: space-between;
+  height: $header-height;
+  display:  flex;
   align-items: center;
-  border-bottom: 1px solid var(--edges-light-color);
-
+  justify-content: space-between;
+  margin-left: 24px;
 
   .logo {
     display: flex;
     align-items: center;
 
     .logo-img {
-      height: 40px;
-      margin-right: 10px;
+      height: 60px;
     }
   }
 
   .nav {
+    height: $header-height;
+    border-radius: 0 0 $border-radius $border-radius;
+    box-shadow: 0px -1px 8px 1px rgba(0,0,0,0.4);
+    padding: 0 36px;
+    background-color: var(--background);
+
     ul {
       display: flex;
-      list-style: none;
-      margin: 0;
-      padding: 0;
+      flex-direction: row;
       align-items: center;
+      height: 100%;
+      justify-content: center;
+      gap: 36px;      
 
       li {
-        margin-left: 20px;
+        list-style: none;
 
         a {
-          text-decoration: none;
-          color: white;
-          font-weight: 500;
-          transition: color 0.3s;
-
-          &:hover {
-            color: #FFD700;
+          position: relative;
+          color: var(--text-color);
+          font-weight: 600;
+          font-size: 18px;
+          &::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 0;
+            height: 3px; 
+            background-color: var(--edges-color);
+            transition: width $transition-duration ease;
+          }
+      
+          &:hover::after {
+            width: 100%; 
           }
         }
+      }
+      .login-theme-group {
+        display: flex;
+        justify-content: space-between;
+
+        @media (max-width: 810px) {
+          width: 100%;
+        }
+      }
+
+      .login-theme-group .login-mobile {
+        display: none;
+        align-items: center;
+        background-color: var(--accent-color);
+        padding: 10px 16px;
+        color: var(--dark-gray);
+        border-radius: $border-radius;        
+
+        @media (max-width: 810px) {
+          display: block;
+        }
+      }
+
+      .theme-toggle-btn {
+        background-color: var(--edges-color);
+        /* Amarelo no início */
+        color: var(--soft-white);
+        border: none;
+        border-radius: 50%;
+        /* Botão arredondado */
+        padding: 12px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        font-size: 18px;
+        /* Tamanho do ícone */
+        cursor: pointer;
+        transition: all $transition-duration;
+    
+        &:hover {
+          background-color: var(--accent-dark);
+          /* Tom mais suave ao passar o mouse */
+          transform: scale(1.05);
+          /* Aumenta o botão ao passar o mouse */
+        }
+    
+        &:active {
+          background-color: var(--accent-dark);
+          transform: scale(0.98);
+          /* Pequena redução ao clicar */
+        }
+      }
+    }
+    
+    @media (max-width: 810px) {
+      position: fixed;
+      top: 0;
+      right: 0;
+      height: 100vh;
+      width: 250px;
+      padding: 56px 24px;
+      background-color: var(--background);
+      border-radius: 0;
+      transform: translateX(100%);
+      transition: transform $transition-duration ease;
+      box-shadow: -2px 0 8px rgba(0, 0, 0, 0.4);
+  
+      &.open {
+        transform: translateX(0);
+      }
+  
+      ul {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 24px;
+        height: auto;
+        justify-content: flex-start;
+        padding-top: 24px;
+      }
+  
+      .theme-toggle-btn {
+        align-self: flex-end;
       }
     }
   }
 
-  .theme-toggle-btn {
-    background-color: #FFD700;
-    /* Amarelo no início */
-    color: white;
-    border: none;
-    border-radius: 50%;
-    /* Botão arredondado */
-    padding: 12px;
+  .login-btn {
+    background-color: var(--edges-color);
+    color: var(--dark-gray);
+    padding: 8px 18px;
+    border-radius: 10px 0 0 10px;
+    font-weight: 700;
+    transition: background-color .5s;
+
+    &:hover {
+      background-color: var(--accent-dark);
+    }
+    @media (max-width: 810px) {
+      display: none; 
+    }
+  }
+
+  .menu-mobile-btn {
+    z-index: 1;
     display: flex;
-    justify-content: center;
-    align-items: center;
-    font-size: 18px;
-    /* Tamanho do ícone */
+    flex-direction: column;
+    justify-content: space-around;
+    width: 30px;
+    height: 24px;
     cursor: pointer;
-    transition: background-color 0.3s, transform 0.3s, color 0.3s;
+    transition: transform $transition-duration ease;
+    background: none;
+    border: none;
 
-    &:hover {
-      background-color: #FFB400;
-      /* Tom mais suave ao passar o mouse */
-      transform: scale(1.1);
-      /* Aumenta o botão ao passar o mouse */
+    span {
+      display: block;
+      width: 100%;
+      height: 3px;
+      background-color: var(--accent-dark);
+      border-radius: 2px;
+      transition: all $transition-duration ease;
     }
 
-    &:active {
-      background-color: #FFA000;
-      transform: scale(0.98);
-      /* Pequena redução ao clicar */
-    }
-  }
-
-  /* Modo escuro: botão roxo para amarelo */
-  .dark .theme-toggle-btn {
-    background-color: #6A0DAD;
-    /* Roxo no modo escuro */
-    color: white;
-
-    &:hover {
-      background-color: #800080;
-      /* Um roxo mais claro ao passar o mouse */
+    &.open {
+      span:nth-child(1) {
+        transform: rotate(45deg) translate(5px, 5px);
+      }
+      span:nth-child(2) {
+        opacity: 0;
+      }
+      span:nth-child(3) {
+        transform: rotate(-45deg) translate(6px, -6px);
+      }
     }
 
-    &:active {
-      background-color: #5A0B85;
-      /* Roxo mais escuro ao clicar */
+    @media (min-width: 810px) {
+      display: none;
     }
   }
 
-  /* Modo claro: botão amarelo para branco */
-  .light .theme-toggle-btn {
-    background-color: white;
-    color: #FFD700;
-    /* Ícone amarelo no modo claro */
-
-    &:hover {
-      background-color: #f1f1f1;
-      /* Cinza claro ao passar o mouse */
-    }
-
-    &:active {
-      background-color: #e0e0e0;
-      /* Cinza mais escuro ao clicar */
-    }
+  @media (max-width: 810px) {
+    margin: 0;
+    padding: 0 30px;
   }
 }

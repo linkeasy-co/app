@@ -1,16 +1,38 @@
-:root {
-  --bg-light: #f7f9fb; /* Soft light background */
-  --bg-dark: #2c2b2b; /* Deep dark background */
-  --text-light: #333; /* Darker text for readability */
-  --text-dark: #f4f4f4; /* Softer white for dark mode */
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap');
+:root { 
+  --light-gray: #2c2c2c;
+  --dark-gray: #111111;
+  --soft-white: #f4f4f4;
   --accent-color: #b4ce35; /* Modern green accent */
   --accent-dark: #8b9e2c; /* Darker accent for hover states */
+  --accent-hover-dark: #778825; /* Darker accent for hover states */
   --edges-color: #b4ce35; /* Edge highlight color */
   --edges-light-color: rgba(181, 206, 53, 0.15); /* Lighter accent for cards */
+  --font-family: "Montserrat", sans-serif;
+}
+
+.light {
+  --background: #f0f2f5;
+  --text-color: #111111;
+}
+
+.dark {
+  --background: #2c2c2c;
+  --text-color: #f4f4f4;
+}
+
+* {
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;  
 }
 
 h1, h2, h3, h4, h5, h6, p {
   color: inherit;
+}
+
+a {
+  text-decoration: none;
 }
 
 .app {
@@ -21,16 +43,7 @@ h1, h2, h3, h4, h5, h6, p {
   display: flex;
   flex-direction: column;
   transition: background-color 0.3s, color 0.3s;
-}
-
-.light {
-  background-color: var(--bg-light);
-  color: var(--text-light);
-}
-
-.dark {
-  background-color: var(--bg-dark);
-  color: var(--text-dark);
+  background-color: var(--background);
 }
 
 .footer {
