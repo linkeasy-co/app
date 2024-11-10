@@ -1,7 +1,6 @@
 import '../styles/BenefitCard.scss';
 
 const BenefitCard = ({ benefit }) => {
-  console.log(benefit)
  return (
   <div className="card-container">
     <div className='card-image'>

@@ -1,9 +1,9 @@
 import React, { useState } from 'react';
 import '../styles/Header.scss'; // Importando os estilos SCSS
-import logo from '../images/image.png'; // Importando a imagem do logo
 import { FaMoon, FaSun } from 'react-icons/fa';
 import { useNavigate } from 'react-router-dom';
 import ButtonDefault from './ButtonDefault';
+import Logo from './Logo';
 
 const Header = ({ darkMode, toggleTheme, isAuthenticated }) => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -13,7 +13,7 @@ const Header = ({ darkMode, toggleTheme, isAuthenticated }) => {
   return (
     <header className="header">
       <a className="logo" href="/">
-        <img src={logo} alt="LinkEasy Logo" className="logo-img" />
+        <Logo color={darkMode ? '#f4f4f4' : '#111111'} width='170px'/>
       </a>
 
       <button className={`menu-mobile-btn ${isMenuOpen ? 'open' : ''}`} onClick={toggleMenu}>

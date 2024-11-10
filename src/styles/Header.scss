@@ -11,15 +11,6 @@ $transition-duration: 0.3s;
   width: 100%;
   padding: 36px;
 
-  .logo {
-    display: flex;
-    align-items: center;
-
-    .logo-img {
-      height: 60px;
-    }
-  }
-
   .nav {
     height: $header-height;
     border-radius: 0 0 $border-radius $border-radius;
