@@ -16,12 +16,14 @@
   --background: #f0f2f5;
   --text-color: #111111;
   --glass-bakground: rgba(255, 255, 255, 0.15);
+  --input-bg: #e0e0e0;
 }
 
 .dark {
   --background: #2c2c2c;
   --text-color: #f4f4f4;
-  --glass-bakground: rgba(58, 58, 58, 0.15); 
+  --glass-bakground: rgba(58, 58, 58, 0.15);
+  --input-bg: #383838;
 }
 
 @mixin breakpoint($size) {

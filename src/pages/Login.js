@@ -2,6 +2,8 @@ import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import '../styles/Login.scss';
 import { useSnackbar } from '../components/SnackBar';
+import TextField from '../components/TextField';
+import ButtonSubmit from '../components/ButtonSubmit';
 
 const Login = ({ login }) => {
   const [email, setEmail] = useState('');
@@ -28,35 +30,31 @@ const Login = ({ login }) => {
 
   return (
     <div className="login-container">
-      <h2>Login</h2>
+      <h2>Fazer Login</h2>
       <form onSubmit={handleSubmit}>
         <div className="input-group">
-          <label htmlFor="email">Email</label>
-          <input
+          <TextField
+            label="Email"
             type="email"
-            id="email"
             value={email}
             onChange={(e) => setEmail(e.target.value)}
             required
-            disabled={loading} // Desativa o campo enquanto carrega
+            disabled={loading}
           />
         </div>
 
         <div className="input-group">
-          <label htmlFor="password">Senha</label>
-          <input
+          <TextField
+            label="Senha"
             type="password"
-            id="password"
             value={password}
             onChange={(e) => setPassword(e.target.value)}
             required
-            disabled={loading} // Desativa o campo enquanto carrega
+            disabled={loading}
           />
         </div>
 
-        <button type="submit" className="btn-primary" disabled={loading}>
-          {loading ? <div className="spinner"></div> : 'Entrar'} {/* Mostra o spinner durante o loading */}
-        </button>
+        <ButtonSubmit title="Entrar" loading={loading} />
       </form>
     </div>
   );
