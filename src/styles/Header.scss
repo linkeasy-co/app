@@ -8,6 +8,8 @@ $transition-duration: 0.3s;
   display:  flex;
   align-items: center;
   justify-content: space-between;
+  width: 100%;
+  padding: 36px;
 
   .logo {
     display: flex;
@@ -23,7 +25,6 @@ $transition-duration: 0.3s;
     border-radius: 0 0 $border-radius $border-radius;
     box-shadow: 0px -1px 8px 1px rgba(0,0,0,0.4);
     padding: 0 36px;
-    background-color: var(--background);
 
     ul {
       display: flex;
@@ -41,6 +42,7 @@ $transition-duration: 0.3s;
           color: var(--text-color);
           font-weight: 600;
           font-size: 18px;
+
           &::after {
             content: '';
             position: absolute;
@@ -57,25 +59,13 @@ $transition-duration: 0.3s;
           }
         }
       }
+
       .login-theme-group {
         display: flex;
         justify-content: space-between;
 
         @include breakpoint(laptop) {
           width: 100%;
-        }
-      }
-
-      .login-theme-group .login-mobile {
-        display: none;
-        align-items: center;
-        background-color: var(--accent-color);
-        padding: 10px 16px;
-        color: var(--dark-gray);
-        border-radius: $border-radius;        
-
-        @include breakpoint(laptop) {
-          display: block;
         }
       }
 
@@ -143,22 +133,6 @@ $transition-duration: 0.3s;
     }
   }
 
-  .login-btn {
-    background-color: var(--edges-color);
-    color: var(--dark-gray);
-    padding: 8px 18px;
-    border-radius: 10px 0 0 10px;
-    font-weight: 700;
-    transition: background-color .5s;
-
-    &:hover {
-      background-color: var(--accent-dark);
-    }
-    @include breakpoint(laptop) {
-      display: none; 
-    }
-  }
-
   .menu-mobile-btn {
     z-index: 100;
     display: flex;
@@ -203,7 +177,7 @@ $transition-duration: 0.3s;
     left: 0;
     right: 0;
     z-index: 1000;
-    background: rgba(255, 255, 255, 0.15); // Fundo semi-transparente para o efeito de vidro
+    background: var(--glass-bakground);
     backdrop-filter: blur(10px);
     box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.1); 
     padding: 0 16px;

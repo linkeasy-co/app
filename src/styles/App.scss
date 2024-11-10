@@ -6,7 +6,7 @@
   --soft-white: #f4f4f4;
   --accent-color: #b4ce35; /* Modern green accent */
   --accent-dark: #8b9e2c; /* Darker accent for hover states */
-  --accent-hover-dark: #778825; /* Darker accent for hover states */
+  --accent-hover-dark: #778825; 
   --edges-color: #b4ce35; /* Edge highlight color */
   --edges-light-color: rgba(181, 206, 53, 0.15); /* Lighter accent for cards */
   --font-family: "Montserrat", sans-serif;
@@ -15,11 +15,36 @@
 .light {
   --background: #f0f2f5;
   --text-color: #111111;
+  --glass-bakground: rgba(255, 255, 255, 0.15);
 }
 
 .dark {
   --background: #2c2c2c;
   --text-color: #f4f4f4;
+  --glass-bakground: rgba(58, 58, 58, 0.15); 
+}
+
+@mixin breakpoint($size) {
+  @if $size == mobile {
+    @media (max-width: 600px) { @content; }
+  } @else if $size == laptop {
+    @media (max-width: 900px) { @content; }
+  } @else if $size == desktop {
+    @media (max-width: 1200px) { @content; }
+  } 
+}
+
+@mixin after-style($height, $bottom) {
+  content: ''; 
+  display: block; 
+  width: 100%; 
+  height: $height; 
+  background-color: var(--accent-color); 
+  position: absolute; 
+  left: 0; 
+  bottom: $bottom; 
+  border-radius: 2px;
+  z-index: -1;
 }
 
 * {
@@ -45,6 +70,36 @@ a {
   flex-direction: column;
   transition: background-color 0.3s, color 0.3s;
   background-color: var(--background);
+  position: relative;
+  z-index: 1;
+  overflow: hidden;
+
+  &::before {
+    content: "";
+    position: absolute;
+    left: 0;
+    top: -50px;
+    background-image: url('../images/logo.svg');
+    background-size: contain; 
+    background-repeat: no-repeat; 
+    background-position: 40%;
+    width: 170vw;
+    height: 170vh;
+    opacity: 0.08; 
+    z-index: -1; 
+
+    @include breakpoint(laptop) {
+      width: 1000px;
+      height: 1000px;
+      background-position: 300%;
+    }
+
+    @include breakpoint(mobile) {
+      width: 900px;
+      height: 900px;
+      background-position: 100%;
+    }
+  }
 }
 
 .footer {
@@ -80,27 +135,4 @@ a {
 
 ::-webkit-scrollbar-thumb:hover {
   background: var(--accent-dark);
-}
-
-@mixin breakpoint($size) {
-  @if $size == mobile {
-    @media (max-width: 600px) { @content; }
-  } @else if $size == laptop {
-    @media (max-width: 900px) { @content; }
-  } @else if $size == desktop {
-    @media (max-width: 1200px) { @content; }
-  } 
-}
-
-@mixin after-style($height, $bottom) {
-  content: ''; 
-  display: block; 
-  width: 100%; 
-  height: $height; 
-  background-color: var(--accent-color); 
-  position: absolute; 
-  left: 0; 
-  bottom: $bottom; 
-  border-radius: 2px;
-  z-index: -1;
 }
