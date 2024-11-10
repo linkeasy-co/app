@@ -2,7 +2,7 @@
 
 .card-container {
   width: 100%;
-  max-width: 450px;
+  max-width: 400px;
   height: 350px;
   border-radius: 18px;
   box-shadow: 8px 8px 8px -10px rgba(0,0,0,0.3);
@@ -39,10 +39,10 @@
     height: 40%; 
     padding: 24px;
     background-color: var(--accent-color);
-    color: var(--text-gray);
 
     h3, p {
       text-align: inherit;
+      color: var(--text-gray);
     }
 
     h3 {

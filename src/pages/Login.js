@@ -29,7 +29,8 @@ const Login = ({ login }) => {
   };
 
   return (
-    <div className="login-container">
+    <div className='container'>
+      <div className="login-container">
       <h2>Fazer Login</h2>
       <form onSubmit={handleSubmit}>
         <div className="input-group">
@@ -54,8 +55,9 @@ const Login = ({ login }) => {
           />
         </div>
 
-        <ButtonSubmit title="Entrar" loading={loading} />
+        <ButtonSubmit title="Entrar" loading={loading} /> 
       </form>
+    </div>
     </div>
   );
 };

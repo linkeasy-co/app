@@ -39,7 +39,9 @@ const Header = ({ darkMode, toggleTheme, isAuthenticated }) => {
           {!isAuthenticated && (<li><a href="/">Suporte</a></li>)}
         </ul>
       </nav>
-      {!isAuthenticated && <ButtonDefault className='desktop-btn md' title='Entrar' onClick={() => navigate('/login')}/>}
+      <div className="fix">
+        {!isAuthenticated && <ButtonDefault className='desktop-btn md' title='Entrar' onClick={() => navigate('/login')}/>}
+      </div>
     </header>
   );
 };

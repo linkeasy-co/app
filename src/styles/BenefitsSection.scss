@@ -10,6 +10,7 @@
 
   .benefits-container {
     width: 100%;
+    max-width: 1440px;
     display: flex;
     flex-wrap: wrap;
     gap: 36px; 
@@ -29,6 +30,7 @@
         text-align: initial;
         font-size: 62px;
         margin-bottom: 42px;
+        color: var(--text-color);
   
         @include breakpoint(laptop) {
           font-size: 42px;

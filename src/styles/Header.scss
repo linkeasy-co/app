@@ -162,6 +162,16 @@ $transition-duration: 0.3s;
     }
   }
 
+  .fix {
+    width: 170px;
+    display: flex;
+    justify-content: end;
+
+    @include breakpoint(laptop) {
+      display: none;
+    }
+  }
+
   @include breakpoint(laptop) {
     position: fixed;
     top: 0;

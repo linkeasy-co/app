@@ -1,32 +1,41 @@
 @import "./App.scss"; // Importa as variáveis globais e temas
 
-.login-container {
+.container{
   width: 100%;
-  max-width: 500px;
-  margin: 80px auto;
-  padding: 30px;
-  background-color: var(--background);
-  border-radius: 36px;
-  box-shadow: 0 4px 10px 6px rgba(0, 0, 0, 0.1);
-  text-align: center;
-  transition: background-color 0.3s ease;
+  height: calc(100vh - 90px);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 20px;
 
 
-  h2 {
-    font-size: 28px;
-    margin-bottom: 20px;
-    color: var(--text-color);
-  }
-
-  .error-message {
-    color: var(--error-color);
-    font-size: 14px;
-    margin-bottom: 20px;
-  }
-
-  .input-group {
-    margin-bottom: 20px;
-    text-align: left;
+  .login-container {
+    width: 100%;
+    max-width: 500px;
+    padding: 30px;
+    background-color: var(--background);
+    border-radius: 36px;
+    box-shadow: 0 4px 10px 6px rgba(0, 0, 0, 0.1);
+    text-align: center;
+    transition: background-color 0.3s ease;
+  
+  
+    h2 {
+      font-size: 28px;
+      margin-bottom: 20px;
+      color: var(--text-color);
+    }
+  
+    .error-message {
+      color: var(--error-color);
+      font-size: 14px;
+      margin-bottom: 20px;
+    }
+  
+    .input-group {
+      margin-bottom: 20px;
+      text-align: left;
+    }
   }
 }
 

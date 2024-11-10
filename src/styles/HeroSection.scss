@@ -66,6 +66,7 @@
 
       .new-price{
         font-weight: 700;
+        color: var(--text-color);
       }
 
       @include breakpoint(laptop) {
