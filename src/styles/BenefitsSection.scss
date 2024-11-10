@@ -1,43 +1,44 @@
 @import "./App.scss";
 
 .benefits-section-container{
+  width: 100%;
   padding: 64px 32px;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
 
-  h2 {
-    font-size: 48px;
-    font-weight: 500;
-    margin-bottom: 32px;
-    position: relative;
-    z-index: 1;
-    color: var(--text-color);
-
-    &::after {
-      @include after-style(10px, 7px);
+  .benefits-container {
+    width: 100%;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 36px; 
+    justify-content: center;  
+    @include breakpoint(mobile) {
+      gap: 16px; 
     }
 
-    @include breakpoint(mobile) {
-      font-size: 36px;
+    .title {
+      width: 100%;
+      max-width: 450px;
+      height: 350px;
+      display: flex;
+      align-items: center;
+  
+      h2 {
+        text-align: initial;
+        font-size: 62px;
+        margin-bottom: 42px;
+  
+        @include breakpoint(laptop) {
+          font-size: 42px;
+        }
+      }
 
-      &::after {
-        @include after-style(7px, 6px);
+      @include breakpoint(laptop) {
+        height: auto;
       }
     }
   }
 }
 
-.benefits-container {
-  width: 100%;
-  max-width: 1000px;
-  display: flex;
-  flex-wrap: wrap;
-  gap: 36px; 
-  justify-content: center;
-
-  @include breakpoint(mobile) {
-    gap: 16px; 
-  }
-}

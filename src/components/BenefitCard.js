@@ -1,10 +1,12 @@
 import '../styles/BenefitCard.scss';
 
 const BenefitCard = ({ benefit }) => {
-  const Icon = benefit.icon
+  console.log(benefit)
  return (
   <div className="card-container">
-    <Icon className='benefit-icon'/>
+    <div className='card-image'>
+      <img src={benefit.imageUrl} alt={benefit.alt} />
+    </div>
     <div className='card-infos'>
       <h3>{benefit.title}</h3>
       <p>{benefit.description}</p>
