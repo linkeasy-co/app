@@ -9,11 +9,8 @@
   label {
     font-size: 16px;
     margin-bottom: 5px;
-    color: black;
-
-    .dark & {
-      color: white;
-    }
+    color: var(--text-color);
+    font-weight: 700;
   }
 
   .error-message {
@@ -22,14 +19,15 @@
     margin-top: 4px;
   }
 
-  input {
+  input, input[type="password"] {
     width: 100%;
-    padding: 12px 0;
+    padding: 16px 24px;
     font-size: 16px;
-    border: 1px solid var(--edges-light-color);
-    border-radius: 8px;
+    border: 1px solid var(--accent-color);
+    border-radius: 16px;
     background-color: var(--input-bg);
-    color: black;
+    color: var(--text-color);
+    font-weight: 600;
     transition: border-color 0.3s ease, box-shadow 0.3s ease;
     outline: none;
 
@@ -39,31 +37,14 @@
 
     &:focus {
       border-color: var(--accent-color);
-      background-color: var(--input-focus-bg);
+      background-color: var(--background);
       box-shadow: 0 0 8px rgba(0, 0, 0, 0.1);
     }
 
     &::placeholder {
-      color: var(--placeholder-color);
-      opacity: 0.6;
-    }
-
-    .dark & {
-      background-color: var(--input-dark-bg);
-      color: white;
-      border-color: var(--edges-dark-color);
-
-      &:hover {
-        background-color: var(--input-dark-hover-bg);
-      }
-
-      &:focus {
-        border-color: var(--accent-dark);
-      }
-
-      &::placeholder {
-        opacity: 0.5;
-      }
+      color: var(--text-color);
+      font-weight: 600;
+      opacity: 0.5;
     }
   }
 

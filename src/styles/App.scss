@@ -1,36 +1,109 @@
-:root {
-  --bg-light: #f7f9fb; /* Soft light background */
-  --bg-dark: #2c2b2b; /* Deep dark background */
-  --text-light: #333; /* Darker text for readability */
-  --text-dark: #f4f4f4; /* Softer white for dark mode */
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap');
+
+:root { 
+  --light-gray: #2c2c2c;
+  --dark-gray: #111111;
+  --soft-white: #f4f4f4;
   --accent-color: #b4ce35; /* Modern green accent */
   --accent-dark: #8b9e2c; /* Darker accent for hover states */
+  --accent-hover-dark: #778825; 
   --edges-color: #b4ce35; /* Edge highlight color */
   --edges-light-color: rgba(181, 206, 53, 0.15); /* Lighter accent for cards */
+  --font-family: "Montserrat", sans-serif;
+}
+
+.light {
+  --background: #f0f2f5;
+  --text-color: #111111;
+  --glass-bakground: rgba(255, 255, 255, 0.15);
+  --input-bg: #e0e0e0;
+}
+
+.dark {
+  --background: #2c2c2c;
+  --text-color: #f4f4f4;
+  --glass-bakground: rgba(58, 58, 58, 0.15);
+  --input-bg: #383838;
+}
+
+@mixin breakpoint($size) {
+  @if $size == mobile {
+    @media (max-width: 600px) { @content; }
+  } @else if $size == laptop {
+    @media (max-width: 900px) { @content; }
+  } @else if $size == desktop {
+    @media (max-width: 1200px) { @content; }
+  } 
+}
+
+@mixin after-style($height, $bottom) {
+  content: ''; 
+  display: block; 
+  width: 100%; 
+  height: $height; 
+  background-color: var(--accent-color); 
+  position: absolute; 
+  left: 0; 
+  bottom: $bottom; 
+  border-radius: 2px;
+  z-index: -1;
+}
+
+* {
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+  font-family: var(--font-family);
 }
 
 h1, h2, h3, h4, h5, h6, p {
   color: inherit;
 }
 
+a {
+  text-decoration: none;
+}
+
 .app {
   width: 100%;
   font-family: var(--font-family);
-  color: inherit;
   min-height: 100vh;
   display: flex;
   flex-direction: column;
+  justify-content: center;
+  align-items: center;
   transition: background-color 0.3s, color 0.3s;
-}
+  background-color: var(--background);
+  position: relative;
+  z-index: 1;
+  overflow: hidden;
 
-.light {
-  background-color: var(--bg-light);
-  color: var(--text-light);
-}
+  &::before {
+    content: "";
+    position: absolute;
+    left: 0;
+    top: -50px;
+    background-image: url('../images/logo.svg');
+    background-size: contain; 
+    background-repeat: no-repeat; 
+    background-position: 40%;
+    width: 170vw;
+    height: 170vh;
+    opacity: 0.08; 
+    z-index: -1; 
 
-.dark {
-  background-color: var(--bg-dark);
-  color: var(--text-dark);
+    @include breakpoint(laptop) {
+      width: 1000px;
+      height: 1000px;
+      background-position: 300%;
+    }
+
+    @include breakpoint(mobile) {
+      width: 900px;
+      height: 900px;
+      background-position: 100%;
+    }
+  }
 }
 
 .footer {
@@ -53,4 +126,17 @@ h1, h2, h3, h4, h5, h6, p {
     background-color: var(--edges-light-color);
     color: var(--text-light);
   }
+}
+
+::-webkit-scrollbar {
+  width: 10px;  
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--accent-color);
+  border-radius: 5px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--accent-dark);
 }

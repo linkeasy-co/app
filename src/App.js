@@ -13,22 +13,18 @@ import './styles/App.scss';
 import { makelogin } from './services/api';
 import Logout from './pages/Logout';
 import { SnackbarProvider } from './components/SnackBar';
+import usePersistedTheme from './hooks/usePersistedTheme';
 
 function App() {
-  const [darkMode, setDarkMode] = useState(true);
+  const [darkMode, setDarkMode] = usePersistedTheme('theme', true);
   const [isAuthenticated, setIsAuthenticated] = useState(false);
 
   const toggleTheme = () => {
-    setDarkMode(!darkMode);
-    localStorage.setItem('theme', !darkMode);
+    setDarkMode((prevTheme) => !prevTheme);
   };
 
   useEffect(() => {
     // Verificar se o token está no LocalStorage ao iniciar o app
-    const theme = localStorage.getItem('theme', !darkMode);
-    if (!theme) {
-      setDarkMode(true);
-    }
     const token = localStorage.getItem('token');
     if (token) {
       setIsAuthenticated(true); // Define como autenticado se o token existir

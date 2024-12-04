@@ -1,0 +1,65 @@
+@import "./App.scss";
+
+
+.button-default {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  background-color: var(--accent-color);
+  color: var(--dark-gray);
+  font-weight: 700;
+  border-radius: 36px;
+  border: none;
+  cursor: pointer;
+  transition: all .3s ease;
+
+  &:hover {
+    background-color: var(--accent-dark);
+  }
+
+  &.desktop-btn {
+    display: block;
+
+    @include breakpoint(laptop) {
+      display: none;
+    }
+  }
+
+  &.mobile-btn {
+    display: none;
+
+    @include breakpoint(laptop) {
+      display: block;
+    }
+  }
+
+  &.animation:hover {
+    transform: scale(1.02);
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.15);
+  }
+
+  &.sm {
+    font-size: 12px;
+    padding: 8px 12px;
+
+    @include breakpoint(mobile) {
+      font-size: 10px;      
+    }
+  }
+  &.md {
+    font-size: 16px;
+    padding: 10px 16px;
+
+    @include breakpoint(mobile) {
+      font-size: 12px;
+    }
+  }
+  &.lg {
+    font-size: 24px;
+    padding: 18px 24px;
+
+    @include breakpoint(mobile) {
+      font-size: 18px;      
+    }
+  }
+}

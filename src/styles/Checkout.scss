@@ -1,96 +1,41 @@
 @import "./App.scss"; // Importa as variáveis globais e temas
 
-.checkout-container {
-  max-width: 600px;
-  margin: 50px auto;
-  padding: 40px;
-  background-color: var(--bg-light); // Cor de fundo padrão do tema
-  border-radius: 15px;
-  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
-  transition: background-color 0.3s ease, color 0.3s ease;
+.container {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 20px;
 
-  .dark & {
-    background-color: var(--bg-dark); // Fundo no tema escuro
-    color: var(--text-light); // Texto claro no tema escuro
-  }
-
-  h2 {
-    font-size: 28px;
-    color: var(--accent-color); // Cor de destaque
-    margin-bottom: 30px;
-    text-align: center;
-    text-shadow: 1px 1px 5px rgba(0, 0, 0, 0.1);
-  }
-
-  form {
-    display: flex;
-    flex-direction: column;
-    gap: 20px; // Espaçamento entre os inputs
-
-    .input-group {
+  .checkout-container {
+    width: 100%;
+    max-width: 600px;
+    padding: 40px;
+    background-color: var(--background);
+    border-radius: 36px;
+    box-shadow: 0 4px 10px 6px rgba(0, 0, 0, 0.1);
+    transition: background-color 0.3s ease, color 0.3s ease;
+  
+    h2 {
+      width: 100%;
+      font-size: 28px;
+      color: var(--text-color);
+      margin-bottom: 30px;
+      text-align: center;
+    }
+  
+    form {
       display: flex;
       flex-direction: column;
-
-      label {
-        font-size: 16px;
-        color: black; // Cor padrão para o texto do rótulo
-        margin-bottom: 8px;
-
-        .dark & {
-          color: white; // Texto claro no tema escuro
-        }
-      }
-
-      input {
-        padding: 12px 15px;
-        border-radius: 8px;
-        border: 1px solid var(--edges-light-color);
-        background-color: var(--input-bg); // Fundo do input no tema claro
-        font-size: 16px;
-        color: var(--text-dark);
-        transition: border-color 0.3s ease, background-color 0.3s ease, box-shadow 0.3s ease;
-
-        &:focus {
-          border-color: var(--accent-color);
-          background-color: var(--input-focus-bg); // Fundo ao focar
-          box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-        }
-
-        .dark & {
-          background-color: var(--input-dark-bg); // Fundo no tema escuro
-          color: var(--text-light);
-        }
-      }
-    }
-
-    .btn-primary {
-      width: 100%;
-      padding: 15px;
-      font-size: 18px;
-      background-color: var(--accent-color);
-      color: white;
-      border: none;
-      border-radius: 50px;
-      cursor: pointer;
-      transition: background-color 0.3s ease, transform 0.3s ease, box-shadow 0.3s ease;
-
-      &:hover {
-        background-color: var(--accent-dark);
-        transform: scale(1.02);
-        box-shadow: 0 10px 20px rgba(0, 0, 0, 0.15);
-      }
-
-      &:active {
-        transform: scale(0.98);
-      }
+      align-items: center;
+      gap: 20px;
     }
   }
-}
 
-// Tema escuro aplicado
-.dark .checkout-container {
-  background-color: var(--bg-dark);
-  color: var(--text-light);
+  @include breakpoint(laptop) {
+    margin-top: 90px;
+  }
 }
 
 // Transição suave para os elementos

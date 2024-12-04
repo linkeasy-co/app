@@ -7,6 +7,7 @@ import { loadStripe } from '@stripe/stripe-js';
 import TextField from '../components/TextField'; // Importando o componente TextField
 import { formatPhone, validateEmail, validatePhone } from '../utils/validations';
 import { useSnackbar } from '../components/SnackBar';
+import ButtonSubmit from '../components/ButtonSubmit';
 
 const Checkout = () => {
   const stripePromise = loadStripe(process.env.REACT_APP_STRIPE_PUBLIC_KEY);
@@ -18,9 +19,11 @@ const Checkout = () => {
   const [confirmationCode, setConfirmationCode] = useState('');
   const [step, setStep] = useState(1);
   const [error, setError] = useState({});
+  const [loading, setLoading] = useState(false)
   const { showSnackbar } = useSnackbar();
 
   const handleCheckout = async () => {
+    setLoading(true); 
     try {
       const response = await createUserLead({ email, name, profession, phone });
       if (response) {
@@ -29,6 +32,8 @@ const Checkout = () => {
       }
     } catch (error) {
       showSnackbar(error.message);
+    } finally {
+      setLoading(false); 
     }
   };
 
@@ -49,62 +54,65 @@ const Checkout = () => {
   }, [email, name, profession, phone]);
 
   return (
-    <div className="checkout-container">
-      {step === 1 && (
-        <>
-          <h2>Complete suas informações</h2>
-          <form onSubmit={(e) => { e.preventDefault(); handleCheckout(); }}>
-            <TextField
-              label="Nome Completo"
-              type="text"
-              value={name}
-              onChange={(e) => setName(e.target.value)}
-              placeholder="Seu nome"
-              required
-            />
+    <div className='container'>
+      <div className="checkout-container">
+        {step === 1 && (
+          <>
+            <h2>Complete suas informações</h2>
+            <form onSubmit={(e) => { e.preventDefault(); handleCheckout(); }}>
+              <TextField
+                label="Nome Completo"
+                type="text"
+                value={name}
+                onChange={(e) => setName(e.target.value)}
+                placeholder="Seu nome"
+                required
+              />
 
-            <TextField
-              label="Profissão"
-              type="text"
-              value={profession}
-              onChange={(e) => setProfession(e.target.value)}
-              placeholder="Sua profissão"
-              required
-            />
+              <TextField 
+                label="Profissão"
+                type="text"
+                value={profession}
+                onChange={(e) => setProfession(e.target.value)}
+                placeholder="Sua profissão"
+                required
+              />
 
-            <TextField
-              label="Celular"
-              type="tel"
-              value={phone}
-              onChange={(e) => setPhone(e.target.value)}
-              placeholder="Seu celular"
-              required
-              error={error.phone}
-            />
+              <TextField
+                label="Celular"
+                type="tel"
+                value={phone}
+                onChange={(e) => setPhone(e.target.value)}
+                placeholder="(00) 12345-6789"
+                required
+                error={error.phone}
+              />
 
-            <TextField
-              label="Email"
-              type="email"
-              value={email}
-              onChange={(e) => setEmail(e.target.value)}
-              placeholder="Seu email"
-              required
-              error={error.email}
-            />
+              <TextField
+                label="Email"
+                type="email"
+                value={email}
+                onChange={(e) => setEmail(e.target.value)}
+                placeholder="seuemail@email.com"
+                required
+                error={error.email}
+              />
 
-            <button type="submit" className="btn-primary">Ir para pagamento</button>
-          </form>
-        </>
-      )}
+              <ButtonSubmit title="Ir para pagamento" loading={loading}/>
+            </form>
+          </>
+        )}
 
-      {step === 2 && (
-        <>
-          <Elements stripe={stripePromise}>
-            <PaymentForm user={{ email, name, profession, phone }} />
-          </Elements>
-        </>
-      )}
+        {step === 2 && (
+          <>
+            <Elements stripe={stripePromise}>
+              <PaymentForm user={{ email, name, profession, phone }} />
+            </Elements>
+          </>
+        )}
+      </div>
     </div>
+    
   );
 };
 
