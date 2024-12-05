@@ -22,6 +22,12 @@
     animation: spin 1s linear infinite;
     display: inline-block;
   }
+
+  &:disabled {
+    cursor: not-allowed;
+    box-shadow: none;
+    color: var(--accent-hover-dark);
+  }
 }
 
 @keyframes spin {

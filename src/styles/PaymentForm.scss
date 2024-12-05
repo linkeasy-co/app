@@ -46,79 +46,41 @@
 
     .input-group {
       text-align: left;
-
+      width: 80%;
       label {
         font-size: 16px;
-        margin-bottom: 8px;
-        color: black; // Cor para o tema claro
-
-        .dark & {
-          color: white; // Cor para o tema escuro
-        }
+        color: var(--text-color);
+        font-weight: 700;
       }
 
       .stripe-card-element {
-        padding: 12px;
-        background-color: var(--input-bg); // Cor de fundo padrão
-        border: 1px solid var(--edges-light-color);
-        border-radius: 8px;
-        transition: border-color 0.3s ease;
-
-        &:focus-within {
-          border-color: var(--accent-color); // Cor de borda ao focar no campo
+        width: 100%;
+        padding: 24px 24px;
+        font-size: 16px;
+        border: 1px solid var(--accent-color);
+        border-radius: 16px;
+        background-color: var(--input-bg);
+        color: var(--text-color);
+        font-weight: 600;
+        transition: border-color 0.3s ease, box-shadow 0.3s ease;
+        outline: none;
+        margin-top: 10px;
+    
+        &:hover {
+          background-color: var(--input-hover-bg);
         }
-
-        .dark & {
-          background-color: var(--input-dark-bg); // Fundo no tema escuro
+    
+        &:focus {
+          border-color: var(--accent-color);
+          background-color: var(--background);
+          box-shadow: 0 0 8px rgba(0, 0, 0, 0.1);
         }
-      }
-    }
-
-    button {
-      background-color: var(--accent-color); // Cor do botão de pagamento
-      color: white;
-      padding: 15px;
-      font-size: 18px;
-      border-radius: 50px;
-      border: none;
-      cursor: pointer;
-      width: 100%;
-      transition: background-color 0.3s ease, transform 0.3s ease, box-shadow 0.3s ease;
-
-      &:hover {
-        background-color: var(--accent-dark);
-        transform: scale(1.02);
-        box-shadow: 0 8px 15px rgba(0, 0, 0, 0.2);
-      }
-
-      &:active {
-        transform: scale(0.98);
-      }
-
-      &:disabled {
-        background-color: #bdbdbd;
-        cursor: not-allowed;
-        box-shadow: none;
-      }
-
-      .loader {
-        border: 4px solid rgba(255, 255, 255, 0.3);
-        border-top: 4px solid white;
-        border-radius: 50%;
-        width: 24px;
-        height: 24px;
-        animation: spin 1s linear infinite;
-        display: inline-block;
-      }
-    }
-
-    @keyframes spin {
-      0% {
-        transform: rotate(0deg);
-      }
-
-      100% {
-        transform: rotate(360deg);
+    
+        &::placeholder {
+          color: var(--text-color);
+          font-weight: 600;
+          opacity: 0.5;
+        }
       }
     }
   }

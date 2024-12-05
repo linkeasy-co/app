@@ -3,6 +3,7 @@ import { useStripe, useElements, CardNumberElement, CardExpiryElement, CardCvcEl
 import '../styles/PaymentForm.scss'; // Importando o CSS estilizado
 import { createCreditCard } from '../services/api';
 import { useNavigate } from 'react-router-dom';
+import ButtonSubmit from './ButtonSubmit';
 
 function PaymentForm(props) {
   const { user } = props;
@@ -80,10 +81,7 @@ function PaymentForm(props) {
             <CardCvcElement />
           </div>
         </div>
-
-        <button type="submit" disabled={!stripe || loading}>
-          {loading ? <div className="loader"></div> : 'Pagar'}
-        </button>
+        <ButtonSubmit title="Pagar" loading={loading} disabled={!stripe || loading}/>
       </form>
 
       {errorMessage && <p className="error-message">{errorMessage}</p>}

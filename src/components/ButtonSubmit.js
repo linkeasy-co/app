@@ -1,7 +1,7 @@
 import '../styles/ButtonSubmit.scss';
 
-const ButtonSubmit = ({title, className, loading}) => {
-return <button type='submit' className={`button-submit ${className}`} disable={loading}>
+const ButtonSubmit = ({title, className, loading, ...props}) => {
+return <button type='submit' className={`button-submit ${className}`} disable={loading} {...props}>
     {loading ? <div className="spinner"></div> : title}
   </button>
 }
