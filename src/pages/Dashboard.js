@@ -1,9 +1,14 @@
-import React, { useEffect, useRef, useState } from 'react';
-import { getNewPost, getPosts, postPost } from '../services/api';
+import React, { useEffect, useState } from 'react';
+import { getNewPost, getPosts, getProfile, postPost } from '../services/api';
 import '../styles/Dashboard.scss';
+import UserInfo from '../components/UserInfo';
+import { useNavigate } from 'react-router-dom';
 
 function Dashboard() {
   const [posts, setPosts] = useState([]);
+  const [user, setUser] = useState(null);
+  const navigate = useNavigate();
+  const [errorMessage, setErrorMessage] = useState('');
 
   useEffect(() => {
     fetchPosts();
@@ -60,45 +65,71 @@ function Dashboard() {
     setPosts(updatedPosts);
   }
 
+  useEffect(() => {
+    const fetchProfile = async () => {
+      try {
+        const token = localStorage.getItem('token');
+        if (!token) {
+          navigate('/login');
+        }
+
+        const data = await getProfile(token);
+        setUser(data);
+      } catch (error) {
+        console.error('Erro ao buscar o perfil:', error);
+        setErrorMessage('Ocorreu um erro ao carregar o perfil. Tente novamente.');
+      }
+    };
+
+    fetchProfile();
+  }, [navigate]);
+
+  if (!user) {
+    return <p>Carregando...</p>;
+  }
+
   return (
     <div className="dashboard-container">
-      {posts.map((post) => (
-        <div key={post._id} className="post-card">
-          {post.posted ? (
-            <>
-              <h2>{post.theme}</h2>
-              <p>{post.message}</p>
-              <span className="date">Publicado em: {post.formattedDate}</span>
-              <span className="views">👁 {post.views} Visualizações</span>
-            </>
-          ) : (
-            <div className="edit-mode">
-              <input
-                type="text"
-                className="input-editable"
-                value={post.theme}
-                onChange={(e) => handleEditChange(e, post._id, 'theme')}
-                placeholder="Editar tema"
-              />
-              <textarea
-                ref={(el) => adjustTextareaHeight(el)} // Ajusta a altura ao carregar
-                className="textarea-editable"
-                value={post.message}
-                onChange={(e) => {
-                  handleEditChange(e, post._id, 'message');
-                  adjustTextareaHeight(e.target); // Ajusta a altura enquanto digita
-                }}
-                placeholder="Editar mensagem"
-              />
-              <span className="not-views">Não publicado</span>
-              <button className="save-button" onClick={() => handleNewPost(post._id)}>Pedir a IA</button>
-              <button className="save-button" onClick={() => handleSave(post._id)}>
-                Publicar
-              </button>
-            </div>
-          )}
-        </div>
-      ))}
+      <UserInfo email={user.email} name={user.name} profession={user.profession} />
+      <div className="posts-container">
+        {posts.map((post) => (
+          <div key={post._id} className="post-card">
+            {post.posted ? (
+              <>
+                <h2>{post.theme}</h2>
+                <p>{post.message}</p>
+                <span className="date">Publicado em: {post.formattedDate}</span>
+                <span className="views">👁 {post.views} Visualizações</span>
+              </>
+            ) : (
+              <div className="edit-mode">
+                <input
+                  type="text"
+                  className="input-editable"
+                  value={post.theme}
+                  onChange={(e) => handleEditChange(e, post._id, 'theme')}
+                  placeholder="Editar tema"
+                />
+                <textarea
+                  ref={(el) => adjustTextareaHeight(el)} // Ajusta a altura ao carregar
+                  className="textarea-editable"
+                  value={post.message}
+                  onChange={(e) => {
+                    handleEditChange(e, post._id, 'message');
+                    adjustTextareaHeight(e.target); // Ajusta a altura enquanto digita
+                  }}
+                  placeholder="Editar mensagem"
+                />
+                <span className="not-views">Não publicado</span>
+                <button className="save-button" onClick={() => handleNewPost(post._id)}>Pedir a IA</button>
+                <button className="save-button" onClick={() => handleSave(post._id)}>
+                  Publicar
+                </button>
+              </div>
+            )}
+          </div>
+        ))}
+      </div>
     </div>
   );
 }

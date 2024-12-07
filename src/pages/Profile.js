@@ -109,10 +109,6 @@ const Profile = () => {
 
   // Conteúdo das abas
   const tabs = [
-    // {
-    //   label: 'Informações Pessoais',
-    //   content: <UserInfo email={user.email} name={user.name} profession={user.profession} />,
-    // },
     {
       label: 'Dias e Horários',
       content: (

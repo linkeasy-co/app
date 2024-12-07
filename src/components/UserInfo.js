@@ -1,12 +1,18 @@
 import React from 'react';
 import '../styles/UserInfo.scss';
+import UserSvg from './UserSvg';
 
 const UserInfo = ({ email, name, profession }) => {
   return (
-    <div className="user-info">
-      <p>Email: {email}</p>
-      <p>Nome: {name}</p>
-      <p>Profissão: {profession}</p>
+    <div className="user-info-container">
+      <div>
+        <UserSvg />
+      </div>
+      <div className="infos">
+        <p className='name'>{name}</p>
+        <p className='info'>{email}</p>
+        <p className='info'> {profession}</p>
+      </div>
     </div>
   );
 };
