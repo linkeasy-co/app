@@ -8,6 +8,7 @@ import LinkedInIntegrationButton from '../components/LinkedInIntegrationButton';
 import Tabs from '../components/Tabs';
 import NewSchedulePicker from '../components/NewSchedulePicker';
 import { SnackbarProvider, useSnackbar } from '../components/SnackBar';
+import ButtonSubmit from '../components/ButtonSubmit';
 
 const daysOfWeek = [
   { value: 'monday', label: 'Segunda-feira' },
@@ -108,10 +109,10 @@ const Profile = () => {
 
   // Conteúdo das abas
   const tabs = [
-    {
-      label: 'Informações Pessoais',
-      content: <UserInfo email={user.email} name={user.name} profession={user.profession} />,
-    },
+    // {
+    //   label: 'Informações Pessoais',
+    //   content: <UserInfo email={user.email} name={user.name} profession={user.profession} />,
+    // },
     {
       label: 'Dias e Horários',
       content: (
@@ -147,13 +148,13 @@ const Profile = () => {
   ];
 
   return (
-    <div className="profile-container">
+    <div className="profile-container"> 
       <h2>Olá, {user.name}!</h2>
       {errorMessage && <p className="error-message">{errorMessage}</p>}
       <Tabs tabs={tabs} />
       <form onSubmit={handleSubmit}>
         <div className="button-group">
-          <button type="submit" className="btn-save">Salvar</button>
+          <ButtonSubmit title='Salvar' />
         </div>
       </form>
     </div>

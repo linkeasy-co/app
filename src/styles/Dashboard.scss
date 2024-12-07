@@ -4,15 +4,10 @@
 .dashboard-container {
   display: flex;
   flex-direction: column;
+  min-height: calc(100vh - 90px);
   gap: 20px;
   padding: 40px;
-  background: var(--bg-light);
   transition: background-color 0.3s ease, color 0.3s ease;
-
-  .dark & {
-    background: var(--bg-dark); // Fundo do tema escuro
-    color: var(--text-light); // Texto claro no tema escuro
-  }
 }
 
 // Estilo dos cartões de post

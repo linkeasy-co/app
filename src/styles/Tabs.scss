@@ -1,48 +1,53 @@
+@import "./App.scss"; 
+
 .tabs {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
   .tab-headers {
+    width: 100%;
+    max-width: 800px;
     display: flex;
+    justify-content: space-between;
     margin-bottom: 1rem;
 
     button {
-      padding: 0.5rem 1rem;
+      padding: .75rem 1.25rem;
       cursor: pointer;
       border: none;
-      background-color: var(--bg-light);
+      background-color: transparent;
+      font-size: 18px;
+      font-weight: 700;
+      color: var(--text-color);
       margin-right: 0.5rem;
       transition: background-color 0.3s ease, color 0.3s ease;
-      border-radius: 10px;
-
-      .dark & {
-        background-color: var(--bg-dark);
-        color: var(--text-dark);
-      }
+      border-radius: 22px;
 
       &.active {
-        background-color: var(--accent-color);
-        /* A cor de destaque */
-        color: var(--text-dark);
-        /* Texto claro quando ativo */
+        background-color: var(--bg-contrast);
+        color: var(--accent-color);
       }
+    }
 
-      &:hover {
-        background-color: var(--edges-light-color);
-        /* Cor suave para hover */
-        color: var(--text-light);
-        /* Texto escuro no hover */
+    @include breakpoint(mobile) {
+      flex-direction: column;
+      align-items: center;
+
+      button {
+        max-width: max-content;
+        font-size: 16px;
       }
     }
   }
 
   .tab-content {
     padding: 1rem;
-    border-radius: 10px;
-    border: 1px solid var(--edges-color);
-    background-color: var(--bg-light);
-    color: var(--text-dark);
-
-    .dark & {
-      background-color: var(--bg-dark);
-      color: var(--text-light);
-    }
+    width: 100%;
+    min-height: 200px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    
   }
 }

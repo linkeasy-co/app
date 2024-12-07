@@ -1,6 +1,7 @@
 import React, { useEffect } from 'react';
 import SelectList from '../components/SelectList';
 import TextField from '../components/TextField';
+import '../styles/NewSchedulePicker.scss';
 
 const NewSchedulePicker = ({ daysOfWeek, firstDay, firstTime, secondDay, secondTime, setFirstDay, setFirstTime, setSecondDay, setSecondTime }) => {
   const chooseDate = localStorage.getItem('chooseDate');

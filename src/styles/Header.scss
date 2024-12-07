@@ -58,6 +58,14 @@ $transition-duration: 0.3s;
         @include breakpoint(laptop) {
           width: 100%;
         }
+
+        a.mobile-btn {
+          display: none;
+      
+          @include breakpoint(laptop) {
+            display: block;
+          }
+        }
       }
 
       .theme-toggle-btn {
@@ -169,6 +177,20 @@ $transition-duration: 0.3s;
 
     @include breakpoint(laptop) {
       display: none;
+    }
+  }
+
+  .logout {
+    padding: 10px 14px;
+    background-color: var(--accent-color);
+    color: var(--dark-gray);
+    font-weight: 700;
+    border-radius: 32px;
+    cursor: pointer;
+    transition: all .3s ease;
+
+    &:hover {
+      background-color: var(--accent-dark);
     }
   }
 

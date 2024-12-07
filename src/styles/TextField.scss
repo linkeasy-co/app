@@ -19,7 +19,7 @@
     margin-top: 4px;
   }
 
-  input, input[type="password"] {
+  input, input[type="password"], input[type="time"] {
     width: 100%;
     padding: 16px 24px;
     font-size: 16px;
@@ -30,10 +30,6 @@
     font-weight: 600;
     transition: border-color 0.3s ease, box-shadow 0.3s ease;
     outline: none;
-
-    &:hover {
-      background-color: var(--input-hover-bg);
-    }
 
     &:focus {
       border-color: var(--accent-color);

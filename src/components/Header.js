@@ -26,13 +26,13 @@ const Header = ({ darkMode, toggleTheme, isAuthenticated }) => {
         <ul>
            <li className='login-theme-group'>
             {!isAuthenticated && <ButtonDefault className='mobile-btn md' title='Entrar' onClick={() => navigate('/login')}/>}
+            {isAuthenticated && <a className='logout mobile-btn' href="/logout">Sair</a>}
             <button onClick={toggleTheme} className="theme-toggle-btn">
               {darkMode ? <FaSun /> : <FaMoon />}  {/*Ícone de sol para modo escuro e lua para modo claro*/}
             </button>
             </li>
           {isAuthenticated && (<li><a href="/dashboard">Meus Posts</a></li>)}
           {isAuthenticated && (<li><a href="/profile">Perfil</a></li>)}
-          {isAuthenticated && (<li><a href="/logout">Sair</a></li>)}
           {!isAuthenticated && (<li><a href="/">Sobre nós</a></li>)}
           {!isAuthenticated && (<li><a href="/">Serviços</a></li>)}
           {!isAuthenticated && (<li><a href="/">Preços</a></li>)}
@@ -41,6 +41,7 @@ const Header = ({ darkMode, toggleTheme, isAuthenticated }) => {
       </nav>
       <div className="fix">
         {!isAuthenticated && <ButtonDefault className='desktop-btn md' title='Entrar' onClick={() => navigate('/login')}/>}
+        {isAuthenticated && <a className='logout' href="/logout">Sair</a>}
       </div>
     </header>
   );

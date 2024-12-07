@@ -17,6 +17,7 @@
   --text-color: #111111;
   --glass-bakground: rgba(255, 255, 255, 0.15);
   --input-bg: #e0e0e0;
+  --bg-contrast: #111111;
 }
 
 .dark {
@@ -24,6 +25,7 @@
   --text-color: #f4f4f4;
   --glass-bakground: rgba(58, 58, 58, 0.15);
   --input-bg: #383838;
+  --bg-contrast: #f4f4f4;
 }
 
 @mixin breakpoint($size) {
@@ -70,12 +72,11 @@ a {
   min-height: 100vh;
   display: flex;
   flex-direction: column;
-  justify-content: center;
   align-items: center;
   transition: background-color 0.3s, color 0.3s;
   background-color: var(--background);
   position: relative;
-  z-index: 1;
+  z-index: 0;
   overflow: hidden;
 
   &::before {

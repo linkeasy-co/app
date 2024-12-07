@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import CreatableSelect from 'react-select/creatable';
+import '../styles/TagSelector.scss';
 
 const TagSelector = ({ selectedTags, onChangeTags, onCreateTag }) => {
   const [theme, setTheme] = useState('light'); // Tema padrão como "light"
@@ -28,23 +29,24 @@ const TagSelector = ({ selectedTags, onChangeTags, onCreateTag }) => {
 const customStyles = (theme) => ({
   control: (provided, state) => ({
     ...provided,
-    backgroundColor: theme === 'true' ? 'var(--input-dark-bg)' : 'var(--input-bg)',
+    backgroundColor: 'var(--accent-color)',
     borderColor: state.isFocused ? 'var(--accent-color)' : 'var(--edges-light-color)',
-    color: theme === 'true' ? 'white' : 'black',
-    padding: '8px',
+    borderRadius: '32px',
+    color: 'var(--dark-gray)',
+    padding: '24px',
     boxShadow: state.isFocused ? '0 0 0 2px var(--accent-color)' : 'none',
+    maxWidth: '100%', // Limita a largura do componente
+    width: '100%', // Adapta ao tamanho do contêiner
     '&:hover': {
       borderColor: 'var(--accent-dark)',
     },
   }),
   placeholder: (provided) => ({
     ...provided,
-    color: theme === 'true' ? 'white' : 'black',
     opacity: 0.7,
   }),
   input: (provided) => ({
     ...provided,
-    color: 'white',
   }),
   multiValue: (provided) => ({
     ...provided,
@@ -53,14 +55,21 @@ const customStyles = (theme) => ({
   }),
   multiValueLabel: (provided) => ({
     ...provided,
-    color: 'white',
+    display: 'flex',
+    color: 'var(--dark-gray)',
+    fontSize: '16px',
+    fontWeight: '700',
+    backgroundColor: 'var(--soft-white)',
+    padding: '12px 16px',
+    borderRadius: '24px'
   }),
   multiValueRemove: (provided) => ({
     ...provided,
     color: 'white',
     '&:hover': {
-      backgroundColor: 'var(--accent-dark)',
-      color: 'white',
+        backgroundColor: 'transparent',
+        color: 'white',
+        cursor: 'pointer'
     },
   }),
   menu: (provided) => ({
