@@ -33,7 +33,7 @@ const customStyles = (theme) => ({
     borderColor: state.isFocused ? 'var(--accent-color)' : 'var(--edges-light-color)',
     borderRadius: '32px',
     color: 'var(--dark-gray)',
-    padding: '24px',
+    padding: '12px',
     boxShadow: state.isFocused ? '0 0 0 2px var(--accent-color)' : 'none',
     maxWidth: '100%', // Limita a largura do componente
     width: '100%', // Adapta ao tamanho do contêiner
@@ -55,13 +55,15 @@ const customStyles = (theme) => ({
   }),
   multiValueLabel: (provided) => ({
     ...provided,
-    display: 'flex',
     color: 'var(--dark-gray)',
     fontSize: '16px',
     fontWeight: '700',
     backgroundColor: 'var(--soft-white)',
     padding: '12px 16px',
-    borderRadius: '24px'
+    borderRadius: '24px',
+    whiteSpace: 'normal',
+    wordWrap: 'break-word',
+    textAlign: 'center',
   }),
   multiValueRemove: (provided) => ({
     ...provided,
