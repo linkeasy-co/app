@@ -1,172 +1,70 @@
-@import "./App.scss"; // Importa as variáveis globais e temas
-
+// src/components/Profile.scss
 .profile-container {
-  // max-width: 800px;
-  width: 100%;
-  margin: 50px 0;
-  padding: 40px;
-  border-radius: 15px;
-  text-align: center;
-  position: relative;
-  transition: all 0.3s ease;
-
-  h2 {
-    font-size: 36px;
-    margin-bottom: 30px;
-    text-shadow: none;
-    color: var(--text-color);
+    width: 80%;
+    margin: auto;
+    padding: 20px;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    background: white;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+  }
   
-    @include breakpoint(mobile) {
-      font-size: 24px;
-      margin-top: 20px;
-    }
-  }
-
-  .error-message {
-    color: var(--error-color); // Cor de erro no tema padrão
-    font-size: 16px;
+  .profile-header {
+    text-align: center;
     margin-bottom: 20px;
-    animation: shake 0.5s;
-  }
-
-  .profile-details {
-    background-color: var(--bg-light); // Fundo do card para tema claro
-    padding: 30px;
-    border-radius: 10px;
-    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
-    margin-bottom: 30px;
-
+  
+    h1 {
+      font-size: 2.5rem;
+      margin: 0;
+    }
+  
     p {
-      font-size: 18px;
-      margin-bottom: 15px;
-      color: black; // Texto padrão no tema claro
+      font-size: 1.2rem;
+      color: gray;
     }
-
-    .dark & p {
-      color: white; // Texto claro no tema escuro
+  }
+  
+  .profile-body {
+    display: flex;
+    align-items: center;
+  
+    .profile-image {
+      border-radius: 50%;
+      margin-right: 20px;
+      width: 150px;
+      height: 150px;
     }
-
-    form {
-      margin-bottom: 20px;
-
-      .input-group {
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        margin-bottom: 20px;
-
-        label {
-          font-size: 16px;
-          color: var(--text-dark); // Texto padrão no tema claro
-          margin-bottom: 8px;
-        }
-
-        input,
-        select {
-          padding: 10px 15px;
-          width: 100%;
-          max-width: 300px;
-          border-radius: 5px;
-          border: none;
-          outline: none;
-          background: var(--input-bg); // Fundo do input no tema claro
-          color: var(--text-dark); // Texto no input para o tema claro
-          font-size: 16px;
-          transition: background 0.3s ease, box-shadow 0.3s ease;
-
-          &:focus {
-            background: var(--input-focus-bg); // Fundo de foco no tema claro
-            box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
-          }
-        }
+  
+    .profile-info {
+      h2 {
+        font-size: 1.8rem;
+        margin: 0;
+      }
+  
+      p {
+        font-size: 1rem;
+        color: #555;
+        margin-top: 10px;
       }
     }
   }
-
-  .btn-save,
-  .btn-linkedin,
-  .btn-logout {
-    display: inline-block;
-    padding: 15px 30px;
-    margin: 10px;
-    font-size: 16px;
-    border-radius: 50px;
-    border: none;
-    cursor: pointer;
-    color: #fff;
-    text-transform: uppercase;
-    letter-spacing: 1.2px;
-    transition: background-color 0.3s, transform 0.3s ease;
-
-    &:hover {
-      transform: scale(1.05);
-      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
-    }
-
-    &:active {
-      transform: scale(0.98);
+  
+  .profile-footer {
+    display: flex;
+    justify-content: center;
+    margin-top: 20px;
+  
+    .edit-button {
+      padding: 10px 20px;
+      border: none;
+      border-radius: 5px;
+      background-color: #007bff;
+      color: white;
+      cursor: pointer;
+      font-size: 1rem;
+  
+      &:hover {
+        background-color: #0056b3;
+      }
     }
   }
-
-  .btn-save {
-    background-color: var(--accent-color); // Cor padrão no tema claro
-  }
-
-  .btn-linkedin {
-    background-color: #0077b5; // Azul do LinkedIn
-    position: relative;
-    overflow: hidden;
-
-    &:hover {
-      background-color: #005983;
-    }
-
-    &:before {
-      content: '';
-      position: absolute;
-      top: 0;
-      left: -75%;
-      width: 100%;
-      height: 100%;
-      background: rgba(255, 255, 255, 0.2);
-      transform: skewX(-25deg);
-      transition: all 0.7s;
-    }
-
-    &:hover:before {
-      left: 150%;
-    }
-  }
-
-  .btn-logout {
-    background-color: var(--error-color); // Cor padrão para sair
-  }
-
-  @keyframes shake {
-
-    0%,
-    100% {
-      transform: translateX(0);
-    }
-
-    25% {
-      transform: translateX(-5px);
-    }
-
-    50% {
-      transform: translateX(5px);
-    }
-
-    75% {
-      transform: translateX(-5px);
-    }
-  }
-}
-
-input,
-select {
-  &:focus {
-    background-color: var(--input-focus-bg);
-    box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
-  }
-}
