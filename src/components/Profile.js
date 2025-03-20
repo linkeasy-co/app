@@ -3,12 +3,16 @@ import React, { useState } from "react";
 import ArrowForwardIosIcon from "@mui/icons-material/ArrowForwardIos";
 import ArrowBackIosIcon from "@mui/icons-material/ArrowBackIos";
 import meImg from "../images/me.jpeg";
+import exxon from "../images/exxon.png";
+import baires from "../images/bairesdev.png";
+import omens from "../images/omens.png";
+import digi from "../images/digi.png";
 
 const Profile = () => {
     const [carrousselIndex, setCarrousselIndex] = useState(0);
-    const [workIndex, setWorkIndex] = useState(0); // Novo estado para o carrossel de experiências de trabalho
+    const [workIndex, setWorkIndex] = useState(0);
 
-    // Array de componentes diretamente no carrossel
+    // Conteúdo do primeiro carrossel
     const carrousselContent = [
         (
             <Grid
@@ -27,45 +31,10 @@ const Profile = () => {
                 </Typography>
             </Grid>
         ),
-        (
-            <Grid
-                style={{
-                    border: "1px solid #ddd",
-                    borderRadius: "10px",
-                    padding: "20px",
-                    boxShadow: "0 4px 8px rgba(0, 0, 0, 0.1)",
-                    backgroundColor: "#fff",
-                    maxWidth: "600px",
-                    margin: "0 auto",
-                }}
-            >
-                <Typography style={{ textAlign: "center" }}>
-                    I specialize in building and optimizing high-performance applications and data pipelines
-                    that drive business intelligence and operational efficiency.
-                </Typography>
-            </Grid>
-        ),
-        (
-            <Grid
-                style={{
-                    border: "1px solid #ddd",
-                    borderRadius: "10px",
-                    padding: "20px",
-                    boxShadow: "0 4px 8px rgba(0, 0, 0, 0.1)",
-                    backgroundColor: "#fff",
-                    maxWidth: "600px",
-                    margin: "0 auto",
-                }}
-            >
-                <Typography style={{ textAlign: "center" }}>
-                    Passionate about bridging the gap between software engineering and data-driven
-                    decision-making, creating scalable, intelligent solutions.
-                </Typography>
-            </Grid>
-        ),
+        // Outros cards...
     ];
 
-    // Conteúdo do segundo carrossel (Experiências de Trabalho)
+    // Conteúdo do carrossel de experiências de trabalho
     const workContent = [
         (
             <Grid
@@ -79,8 +48,21 @@ const Profile = () => {
                     margin: "0 auto",
                 }}
             >
-                <Typography style={{ textAlign: "center" }}>
-                    **Company A** - Software Engineer (2018-2020): Developed scalable microservices and optimized data pipelines to improve system performance by 30%.
+                <Grid item xs={12} style={{ display: "flex", justifyContent: "center", gap: "10px" }}>
+                    <img
+                        alt="BairesDev"
+                        src={baires}
+                        style={{ objectFit: "contain", width: 100, height: 100, borderRadius: "50%" }} // Adicionado borderRadius
+                    />
+                    <img
+                        alt="ExxonMobil"
+                        src={exxon}
+                        style={{ objectFit: "contain", width: 100, height: 100, borderRadius: "50%" }} // Adicionado borderRadius
+                    />
+                </Grid>
+                <Typography style={{ textAlign: "center", marginTop: "15px" }}>
+                    <strong>BairesDev & ExxonMobil</strong><br />
+                    Data and Foundry Engineer (2024 - Current): Developing scalable solutions and innovative data pipelines for operational and business intelligence.
                 </Typography>
             </Grid>
         ),
@@ -96,8 +78,16 @@ const Profile = () => {
                     margin: "0 auto",
                 }}
             >
-                <Typography style={{ textAlign: "center" }}>
-                    **Company B** - Data Engineer (2020-2022): Designed and implemented ETL processes and big data solutions, transforming raw data into actionable insights.
+                <Grid item xs={12} style={{ display: "flex", justifyContent: "center" }}>
+                    <img
+                        alt="Omens"
+                        src={omens}
+                        style={{ objectFit: "contain", width: 100, height: 100, borderRadius: "50%" }} // Adicionado borderRadius
+                    />
+                </Grid>
+                <Typography style={{ textAlign: "center", marginTop: "15px" }}>
+                    <strong>Omens</strong><br />
+                    Tech Lead - Ruby on Rails (2024): Led development teams to deliver high-performance systems, improving application scalability and reliability.
                 </Typography>
             </Grid>
         ),
@@ -113,21 +103,20 @@ const Profile = () => {
                     margin: "0 auto",
                 }}
             >
-                <Typography style={{ textAlign: "center" }}>
-                    **Company C** - Cloud Infrastructure Engineer (2022-Present): Optimized cloud-native architectures for reliability and scalability, reducing operational costs by 25%.
+                <Grid item xs={12} style={{ display: "flex", justifyContent: "center" }}>
+                    <img
+                        alt="Digigrow"
+                        src={digi}
+                        style={{ objectFit: "contain", width: 100, height: 100, borderRadius: "50%" }} // Adicionado borderRadius
+                    />
+                </Grid>
+                <Typography style={{ textAlign: "center", marginTop: "15px" }}>
+                    <strong>Digigrow</strong><br />
+                    Intern to Tech Lead (2021-2024): Progressed from intern to leadership role, implementing efficient solutions and mentoring junior developers.
                 </Typography>
             </Grid>
         ),
     ];
-
-    // Funções para navegação
-    const handleLeftClick = () => {
-        setCarrousselIndex((prevIndex) => (prevIndex === 0 ? carrousselContent.length - 1 : prevIndex - 1));
-    };
-
-    const handleRightClick = () => {
-        setCarrousselIndex((prevIndex) => (prevIndex === carrousselContent.length - 1 ? 0 : prevIndex + 1));
-    };
 
     const handleWorkLeftClick = () => {
         setWorkIndex((prevIndex) => (prevIndex === 0 ? workContent.length - 1 : prevIndex - 1));
@@ -138,9 +127,9 @@ const Profile = () => {
     };
 
     return (
-        <Grid container spacing={2} style={{ position: "relative" }}>
+        <Grid container spacing={2} style={{ position: "relative", backgroundColor: "lightGray" }}>
             {/* Avatar */}
-            <Grid item xs={12} style={{ display: "flex", justifyContent: "center" }}>
+            <Grid item xs={12} style={{ display: "flex", justifyContent: "center"}}>
                 <Avatar alt="Giovanni Cabral" src={meImg} sx={{ width: 150, height: 150 }} />
             </Grid>
 
@@ -152,40 +141,10 @@ const Profile = () => {
                 </Grid>
             </Grid>
 
-            {/* Primeiro Carrossel */}
             <Grid item xs={12} style={{ display: "flex", justifyContent: "center", padding: "0px 70px" }}>
                 {carrousselContent[carrousselIndex]}
             </Grid>
 
-            {/* Navegação Primeiro Carrossel */}
-            <IconButton
-                onClick={handleLeftClick}
-                style={{
-                    position: "absolute",
-                    left: "20px",
-                    top: "60%",
-                    transform: "translateY(-50%)",
-                    backgroundColor: "#4CAF50",
-                    color: "white",
-                }}
-            >
-                <ArrowBackIosIcon />
-            </IconButton>
-            <IconButton
-                onClick={handleRightClick}
-                style={{
-                    position: "absolute",
-                    right: "20px",
-                    top: "60%",
-                    transform: "translateY(-50%)",
-                    backgroundColor: "#4CAF50",
-                    color: "white",
-                }}
-            >
-                <ArrowForwardIosIcon />
-            </IconButton>
-
-            {/* Segundo Carrossel: Experiências de Trabalho */}
             <Grid item xs={12} style={{ display: "flex", justifyContent: "center", padding: "20px 70px" }}>
                 {workContent[workIndex]}
             </Grid>
@@ -196,7 +155,7 @@ const Profile = () => {
                 style={{
                     position: "absolute",
                     left: "20px",
-                    top: "90%",
+                    top: "80%",
                     transform: "translateY(-50%)",
                     backgroundColor: "#4CAF50",
                     color: "white",
@@ -209,7 +168,7 @@ const Profile = () => {
                 style={{
                     position: "absolute",
                     right: "20px",
-                    top: "90%",
+                    top: "80%",
                     transform: "translateY(-50%)",
                     backgroundColor: "#4CAF50",
                     color: "white",
