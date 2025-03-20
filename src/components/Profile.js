@@ -12,7 +12,6 @@ const Profile = () => {
     const [carrousselIndex, setCarrousselIndex] = useState(0);
     const [workIndex, setWorkIndex] = useState(0);
 
-    // Conteúdo do primeiro carrossel
     const carrousselContent = [
         (
             <Grid
@@ -31,10 +30,8 @@ const Profile = () => {
                 </Typography>
             </Grid>
         ),
-        // Outros cards...
     ];
 
-    // Conteúdo do carrossel de experiências de trabalho
     const workContent = [
         (
             <Grid
@@ -128,12 +125,11 @@ const Profile = () => {
 
     return (
         <Grid container spacing={2} style={{ position: "relative", backgroundColor: "lightGray" }}>
-            {/* Avatar */}
-            <Grid item xs={12} style={{ display: "flex", justifyContent: "center"}}>
+            <Grid item xs={12} style={{ display: "flex", justifyContent: "center" }}>
                 <Avatar alt="Giovanni Cabral" src={meImg} sx={{ width: 150, height: 150 }} />
             </Grid>
 
-            {/* Cabeçalhos */}
+
             <Grid item xs={12} style={{ display: "flex", justifyContent: "center", padding: "0", margin: "0" }}>
                 <Grid item style={{ textAlign: "center" }}>
                     <h1>Giovanni Cabral</h1>
@@ -149,7 +145,6 @@ const Profile = () => {
                 {workContent[workIndex]}
             </Grid>
 
-            {/* Navegação Segundo Carrossel */}
             <IconButton
                 onClick={handleWorkLeftClick}
                 style={{
