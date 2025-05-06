@@ -15,6 +15,7 @@ const Checkbox = ({ label, onChange }) => {
     <div className={styles.container}>
       <label className={styles['checkbox-container']}>
         <input type="checkbox" checked={checked} onChange={handleChange} />
+        
         <span className={styles.checkbox}></span>
         <span className={styles.label}>{label}</span>
       </label>
